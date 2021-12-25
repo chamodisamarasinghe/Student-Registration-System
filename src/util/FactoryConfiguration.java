@@ -17,11 +17,10 @@ public class FactoryConfiguration {
         try {
             properties.load(ClassLoader.getSystemClassLoader().getResourceAsStream("hibernate.properties"));
         } catch (IOException e) {
-            throw new RuntimeException("There is issue in hibernate file");
+            e.printStackTrace();
         }
-
-
-        // Configuration configuration = new Configuration().ge
+       // Configuration configuration = new Configuration().addAnnotatedClass(Student.class).mergeProperties(properties);
+      //  sessionFactory = configuration.buildSessionFactory();
 
     }
 

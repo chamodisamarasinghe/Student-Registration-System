@@ -2,8 +2,11 @@ package entity;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import java.util.ArrayList;
+import java.util.List;
 
-@Entity
+@Entity(name = "student")
 public class Student implements SuperEntity {
     @Id
     private String studentId;
@@ -14,10 +17,13 @@ public class Student implements SuperEntity {
     private int age;
     private String address;
 
+    @ManyToMany
+    private List<Programme> programmeList = new ArrayList<>();
+
     public Student() {
     }
 
-    public Student(String studentId, String NIC, String name, String gender, String birthday, int age, String address) {
+    public Student(String studentId, String NIC, String name, String gender, String birthday, int age, String address, List<Programme> programmeList) {
         this.setStudentId(studentId);
         this.setNIC(NIC);
         this.setName(name);
@@ -25,6 +31,7 @@ public class Student implements SuperEntity {
         this.setBirthday(birthday);
         this.setAge(age);
         this.setAddress(address);
+        this.setProgrammeList(programmeList);
     }
 
     public String getStudentId() {
@@ -83,6 +90,14 @@ public class Student implements SuperEntity {
         this.address = address;
     }
 
+    public List<Programme> getProgrammeList() {
+        return programmeList;
+    }
+
+    public void setProgrammeList(List<Programme> programmeList) {
+        this.programmeList = programmeList;
+    }
+
     @Override
     public String toString() {
         return "Student{" +
@@ -93,6 +108,7 @@ public class Student implements SuperEntity {
                 ", birthday='" + birthday + '\'' +
                 ", age=" + age +
                 ", address='" + address + '\'' +
+                ", programmeList=" + programmeList +
                 '}';
     }
 }

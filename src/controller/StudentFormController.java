@@ -31,5 +31,4 @@ public class StudentFormController {
         window.setScene(new Scene(load));
     }
 
-
 }
