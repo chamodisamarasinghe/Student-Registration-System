@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="programmeFormContext" prefHeight="1000.0" prefWidth="1900.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ProgrammeFormController">
+   <children>
+      <AnchorPane prefHeight="93.0" prefWidth="1900.0" style="-fx-background-color: #000059;">
+         <children>
+            <Text fill="#f5f2f2" layoutX="138.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sipsewana" wrappingWidth="226.6708984375">
+               <font>
+                  <Font name="System Bold" size="37.0" />
+               </font>
+            </Text>
+            <ImageView fitHeight="57.0" fitWidth="61.0" layoutX="42.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assests/icons8-school-50.png" />
+               </image>
+            </ImageView>
+            <Text fill="#d9f80e" layoutX="686.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Training Programmes" wrappingWidth="497.6708984375">
+               <font>
+                  <Font name="System Bold Italic" size="39.0" />
+               </font>
+            </Text>
+            <JFXButton buttonType="RAISED" layoutX="1772.0" layoutY="12.0" onAction="#openHomePage" prefHeight="69.0" prefWidth="100.0" style="-fx-border-color: white;" />
+            <ImageView fitHeight="57.0" fitWidth="64.0" layoutX="1790.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assests/icons8-home-50.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <ImageView fitHeight="928.0" fitWidth="577.0" layoutX="14.0" layoutY="120.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assests/istockphoto-691693224-1024x1024.jpg" />
+         </image>
+      </ImageView>
+      <TextField alignment="CENTER" layoutX="602.0" layoutY="135.0" prefHeight="52.0" prefWidth="259.0" promptText="Programme Id" style="-fx-background-color: #000059;">
+         <font>
+            <Font name="System Bold" size="21.0" />
+         </font>
+      </TextField>
+      <TextField alignment="CENTER" layoutX="871.0" layoutY="135.0" prefHeight="52.0" prefWidth="341.0" promptText="Programme" style="-fx-background-color: #000059;">
+         <font>
+            <Font name="System Bold" size="21.0" />
+         </font>
+      </TextField>
+      <TextField alignment="CENTER" layoutX="1227.0" layoutY="135.0" prefHeight="52.0" prefWidth="287.0" promptText="Duration" style="-fx-background-color: #000059;">
+         <font>
+            <Font name="System Bold" size="21.0" />
+         </font>
+      </TextField>
+      <TextField alignment="CENTER" layoutX="1531.0" layoutY="135.0" prefHeight="52.0" prefWidth="341.0" promptText="Fee(LKR)" style="-fx-background-color: #000059;">
+         <font>
+            <Font name="System Bold" size="21.0" />
+         </font>
+      </TextField>
+      <TableView layoutX="602.0" layoutY="248.0" prefHeight="737.0" prefWidth="977.0" stylesheets="@styles/StudentForm.css">
+        <columns>
+          <TableColumn prefWidth="200.0" text="Programme Id" />
+          <TableColumn prefWidth="359.0" text="Programme" />
+            <TableColumn prefWidth="203.0" text="Duration" />
+            <TableColumn prefWidth="214.0" text="Fee(LKR)" />
+        </columns>
+      </TableView>
+      <JFXButton buttonType="RAISED" layoutX="1593.0" layoutY="373.0" prefHeight="56.0" prefWidth="287.0" style="-fx-background-color: #0A0AFF;" text="Add" textFill="#fff8f8">
+         <font>
+            <Font name="System Bold" size="26.0" />
+         </font>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" layoutX="1593.0" layoutY="455.0" prefHeight="56.0" prefWidth="287.0" style="-fx-background-color: green;" text="Update" textFill="#fff8f8">
+         <font>
+            <Font name="System Bold" size="26.0" />
+         </font>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" layoutX="1593.0" layoutY="538.0" prefHeight="56.0" prefWidth="287.0" style="-fx-background-color: red;" text="Delete" textFill="#fff8f8">
+         <font>
+            <Font name="System Bold" size="26.0" />
+         </font>
+      </JFXButton>
+      <ImageView fitHeight="42.0" fitWidth="42.0" layoutX="1602.0" layoutY="380.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assests/icons8-add-50.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="42.0" fitWidth="36.0" layoutX="1605.0" layoutY="465.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assests/icons8-available-updates-50.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="42.0" fitWidth="42.0" layoutX="1602.0" layoutY="545.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assests/icons8-dustbin-64.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

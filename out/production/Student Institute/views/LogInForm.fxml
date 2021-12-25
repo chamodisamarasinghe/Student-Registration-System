@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="logInFormContext" prefHeight="743.0" prefWidth="1075.0" style="-fx-background-color: #82CAFF; -fx-border-color: #0000A5; -fx-border-width: 20;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LogInFormController">
+   <children>
+      <Text fill="#100ba1" layoutX="451.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Log In Form" textAlignment="CENTER" wrappingWidth="450.0000046938658">
+         <font>
+            <Font name="System Bold" size="47.0" />
+         </font>
+      </Text>
+      <JFXTextField fx:id="txtUserName" labelFloat="true" layoutX="587.0" layoutY="240.0" prefHeight="51.0" prefWidth="450.0" promptText="User Name">
+         <font>
+            <Font name="System Bold" size="25.0" />
+         </font>
+      </JFXTextField>
+      <JFXTextField fx:id="txtPassWord" labelFloat="true" layoutX="587.0" layoutY="382.0" prefHeight="51.0" prefWidth="450.0" promptText="Pass Word">
+         <font>
+            <Font name="System Bold" size="25.0" />
+         </font>
+      </JFXTextField>
+      <ImageView fitHeight="69.0" fitWidth="72.0" layoutX="471.0" layoutY="240.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assests/profile.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="54.0" fitWidth="59.0" layoutX="478.0" layoutY="393.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assests/padlock.png" />
+         </image>
+      </ImageView>
+      <JFXButton buttonType="RAISED" layoutX="575.0" layoutY="613.0" onAction="#openHomePage" prefHeight="57.0" prefWidth="363.0" style="-fx-background-color: #0000A5;" text="LogIn" textFill="#f8f6f6">
+         <font>
+            <Font name="System Bold" size="27.0" />
+         </font>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" layoutX="464.0" layoutY="641.0" onAction="#cancelOnAction" prefHeight="57.0" prefWidth="181.0" style="-fx-background-color: red;" text="Cancel" textFill="#f8f6f6" visible="false">
+         <font>
+            <Font name="System Bold" size="27.0" />
+         </font>
+      </JFXButton>
+      <ImageView fitHeight="44.0" fitWidth="54.0" layoutX="45.0" layoutY="45.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assests/icons8-school-50.png" />
+         </image>
+      </ImageView>
+      <Text fill="#f2ecec" layoutX="117.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sipsewana">
+         <font>
+            <Font name="System Bold" size="33.0" />
+         </font>
+      </Text>
+      <ImageView fitHeight="524.0" fitWidth="383.0" layoutX="34.0" layoutY="179.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assests/e91857d0-233f-4cf4-b47a-f85c3d335f13.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

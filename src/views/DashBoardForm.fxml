@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="dashBoardContext" prefHeight="1000.0" prefWidth="1900.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DashBoardFormController">
+   <children>
+      <AnchorPane layoutX="389.0" layoutY="14.0" prefHeight="548.0" prefWidth="1494.0" style="-fx-background-color: #000059;">
+         <children>
+            <Text fill="#fffdfd" layoutX="71.0" layoutY="192.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sipsewana Institute" wrappingWidth="299.6708984375">
+               <font>
+                  <Font name="System Bold" size="56.0" />
+               </font>
+            </Text>
+            <Text fill="#f5f4f4" layoutX="50.0" layoutY="429.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Come And Bright you Path......" wrappingWidth="597.45263671875">
+               <font>
+                  <Font name="System Bold Italic" size="39.0" />
+               </font>
+            </Text>
+            <ImageView fitHeight="81.0" fitWidth="105.0" layoutX="71.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assests/icons8-school-50.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="481.0" fitWidth="795.0" layoutX="648.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assests/clip-brainstorm.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="1000.0" prefWidth="374.0" style="-fx-background-color: #000059;">
+         <children>
+            <JFXButton alignment="CENTER_RIGHT" buttonType="RAISED" layoutX="6.0" layoutY="415.0" onAction="#openProgrammeForm" prefHeight="81.0" prefWidth="367.0" text="Programme Details" textFill="#fffefe">
+               <font>
+                  <Font name="System Bold" size="26.0" />
+               </font>
+            </JFXButton>
+            <ImageView fitHeight="207.0" fitWidth="202.0" layoutX="76.0" layoutY="72.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assests/students.png" />
+               </image>
+            </ImageView>
+            <JFXButton alignment="CENTER_RIGHT" buttonType="RAISED" layoutX="4.0" layoutY="510.0" onAction="#openStudentForm" prefHeight="88.0" prefWidth="367.0" text="Student Details" textFill="#fffefe">
+               <font>
+                  <Font name="System Bold" size="26.0" />
+               </font>
+            </JFXButton>
+            <ImageView fitHeight="52.0" fitWidth="52.0" layoutX="14.0" layoutY="528.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assests/icons8-teacher-50.png" />
+               </image>
+            </ImageView>
+            <JFXButton alignment="CENTER_RIGHT" buttonType="RAISED" layoutX="4.0" layoutY="727.0" onAction="#viewRegistration" prefHeight="88.0" prefWidth="367.0" text="View Registrations" textFill="#fffefe">
+               <font>
+                  <Font name="System Bold" size="26.0" />
+               </font>
+            </JFXButton>
+            <ImageView fitHeight="52.0" fitWidth="52.0" layoutX="14.0" layoutY="752.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assests/icons8-timetable-64.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="52.0" fitWidth="52.0" layoutX="14.0" layoutY="430.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assests/icons8-view-details-64.png" />
+               </image>
+            </ImageView>
+            <JFXButton alignment="CENTER_RIGHT" buttonType="RAISED" layoutX="4.0" layoutY="614.0" onAction="#openRegisterForm" prefHeight="88.0" prefWidth="367.0" text="Register Students" textFill="#fffefe">
+               <font>
+                  <Font name="System Bold" size="26.0" />
+               </font>
+            </JFXButton>
+            <ImageView fitHeight="52.0" fitWidth="52.0" layoutX="14.0" layoutY="632.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assests/icons8-registration-64.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="424.0" layoutY="597.0" prefHeight="386.0" prefWidth="300.0" style="-fx-background-color: #DEDEDE; -fx-border-color: #000059; -fx-border-width: 10;">
+         <children>
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="66.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assests/computer.png" />
+               </image>
+            </ImageView>
+            <Text layoutX="58.0" layoutY="306.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Online courses" textAlignment="CENTER" wrappingWidth="184.0000073313713">
+               <font>
+                  <Font size="26.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="914.0" layoutY="597.0" prefHeight="386.0" prefWidth="300.0" style="-fx-background-color: #DEDEDE; -fx-border-color: #000059; -fx-border-width: 10;">
+         <children>
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="59.0" layoutY="54.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assests/teacher.png" />
+               </image>
+            </ImageView>
+            <Text layoutX="17.0" layoutY="311.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Experienced lecturers" textAlignment="CENTER" wrappingWidth="269.0000073313713">
+               <font>
+                  <Font size="26.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="1435.0" layoutY="597.0" prefHeight="386.0" prefWidth="300.0" style="-fx-background-color: #DEDEDE; -fx-border-color: #000059; -fx-border-width: 10;">
+         <children>
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="77.0" layoutY="43.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assests/clock.png" />
+               </image>
+            </ImageView>
+            <Text layoutX="15.0" layoutY="326.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Time Table" textAlignment="CENTER" wrappingWidth="269.0000073313713">
+               <font>
+                  <Font size="26.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
