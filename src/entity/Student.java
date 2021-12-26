@@ -34,6 +34,9 @@ public class Student implements SuperEntity {
         this.setProgrammeList(programmeList);
     }
 
+    public Student(String studentId, String nic, String name, String gender, String birthday, int age, String address) {
+    }
+
     public String getStudentId() {
         return studentId;
     }
