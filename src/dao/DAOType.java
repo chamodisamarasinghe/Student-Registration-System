@@ -1,5 +1,5 @@
 package dao;
 
-public class DAOType {
-
+public enum DAOType {
+    STUDENT, PROGRAMME
 }
