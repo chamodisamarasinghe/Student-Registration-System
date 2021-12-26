@@ -1,4 +1,5 @@
 package bo;
 
-public class BoType {
+public enum BoType {
+    STUDENT, PROGRAMME
 }
