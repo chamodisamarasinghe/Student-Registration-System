@@ -3,6 +3,7 @@ package bo.custom;
 import bo.SuperBO;
 import dto.ProgrammeDTO;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public interface ProgrammeBO extends SuperBO {
@@ -13,4 +14,6 @@ public interface ProgrammeBO extends SuperBO {
     public boolean delete(String id) throws Exception;
 
     public boolean update(ProgrammeDTO programmeDTO) throws Exception;
+
+    ArrayList<ProgrammeDTO> getAllProgrammes();
 }
