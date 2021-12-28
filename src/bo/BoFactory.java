@@ -12,7 +12,14 @@ public class BoFactory {
         return (null == boFactory) ? boFactory = new BoFactory() : boFactory;
     }
 
-    public <T extends SuperBO> T getBO(BoType boType){
+    public static BoFactory getBoFactory() {
+        if (boFactory == null) {
+            boFactory = new BoFactory();
+        }
+        return boFactory;
+    }
+
+    public <T extends SuperBO> T getBO(BoTypes boType){
         switch (boType){
             case STUDENT:
                 return (T) new StudentBOImpl();
@@ -21,5 +28,9 @@ public class BoFactory {
             default:
                 return null;
         }
+    }
+
+    public enum  BoTypes {
+        STUDENT, PROGRAMME
     }
 }

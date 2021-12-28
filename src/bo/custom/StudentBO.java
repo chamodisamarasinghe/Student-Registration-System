@@ -3,6 +3,7 @@ package bo.custom;
 import bo.SuperBO;
 import dto.StudentDTO;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public interface StudentBO extends SuperBO {
@@ -13,4 +14,10 @@ public interface StudentBO extends SuperBO {
     public boolean delete(String id) throws Exception;
 
     public boolean update(StudentDTO studentDTO) throws Exception;
+
+    ArrayList<StudentDTO> getAllStudents();
+
+    boolean ifStudentExist(String studentId);
+
+    String generateNewID();
 }

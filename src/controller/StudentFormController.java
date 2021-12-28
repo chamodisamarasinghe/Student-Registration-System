@@ -1,14 +1,14 @@
 package controller;
 
+import bo.BoFactory;
+import bo.custom.StudentBO;
 import com.jfoenix.controls.JFXButton;
+import dto.StudentDTO;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -16,8 +16,13 @@ import views.tdm.StudentTM;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class StudentFormController {
+    private final StudentBO studentBO = BoFactory.getBoFactory().getBO(BoFactory.BoTypes.STUDENT);
     public AnchorPane studentFormContext;
     public TextField txtName;
     public TextField txtNIC;
@@ -60,7 +65,7 @@ public class StudentFormController {
                 txtName.setText(newValue.getName());
                 txtGender.setText(newValue.getGender());
                 txtBirthday.setText(newValue.getBirthday());
-                txtAge.setText(newValue.getAge());
+                txtAge.setText(String.valueOf(newValue));
                 txtAddress.setText(newValue.getAddress());
                 txtId.setDisable(false);
                 txtNIC.setDisable(false);
@@ -77,9 +82,33 @@ public class StudentFormController {
     }
 
     private void loadAllStudents() {
+        tblStudent.getItems().clear();
+        ArrayList<StudentDTO> allStudents = studentBO.getAllStudents();
+        for (StudentDTO student : allStudents) {
+            tblStudent.getItems().add(new StudentTM(student.getStudentId(), student.getNIC(), student.getName(),
+                    student.getGender(), student.getBirthday(), student.getAge(), student.getAddress()));
+        }
+
     }
 
     private void initUI() {
+        txtId.clear();
+        txtNIC.clear();
+        txtName.clear();
+        txtGender.clear();
+        txtBirthday.clear();
+        txtAge.clear();
+        txtAddress.clear();
+        txtId.setDisable(true);
+        txtNIC.setDisable(true);
+        txtName.setDisable(true);
+        txtGender.setDisable(true);
+        txtBirthday.setDisable(true);
+        txtAge.setDisable(true);
+        txtAddress.setDisable(true);
+        txtId.setEditable(false);
+        btnAdd.setDisable(true);
+        btnDelete.setDisable(true);
     }
 
     public void openHomePage(ActionEvent actionEvent) throws IOException {
@@ -89,15 +118,102 @@ public class StudentFormController {
         window.setScene(new Scene(load));
     }
 
-    public void addOnAction(ActionEvent actionEvent) {
+    public void addOnAction(ActionEvent actionEvent) throws Exception {
+        String studentId = txtId.getText();
+        String NIC = txtNIC.getText();
+        String name = txtName.getText();
+        String gender = txtGender.getText();
+        String birthday = txtBirthday.getText();
+        int age = Integer.parseInt(String.valueOf(txtAge));
+        String address = txtAddress.getText();
+        if (!name.matches("[A-Za-z ]+")) {
+            new Alert(Alert.AlertType.ERROR, "Invalid name").show();
+            txtName.requestFocus();
+            return;
+        } else if (!address.matches(".{3,}")) {
+            new Alert(Alert.AlertType.ERROR, "Address should be at least 3 characters long").show();
+            txtAddress.requestFocus();
+            return;
+        }
+
+        if (btnAdd.getText().equalsIgnoreCase("save")) {
+
+            try {
+                if (existStudent(studentId)) {
+                    new Alert(Alert.AlertType.ERROR, studentId + " already exists").show();
+                }
+                StudentDTO studentDTO = new StudentDTO(studentId, NIC, name, gender, birthday, age, address);
+                studentBO.add(studentDTO);
+                tblStudent.getItems().add(new StudentTM(studentId, NIC, name, gender, birthday, age, address));
+            } catch (SQLException e) {
+                new Alert(Alert.AlertType.ERROR, "Failed to save the Student " + e.getMessage()).show();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+
+
+        } else {
+
+            try {
+                if (!existStudent(studentId)) {
+                    new Alert(Alert.AlertType.ERROR, "There is no such student associated with the id " + studentId).show();
+                }
+                StudentDTO studentDTO = new StudentDTO(studentId, NIC, name, gender, birthday, age, address);
+                studentBO.update(studentDTO);
+            } catch (SQLException e) {
+                new Alert(Alert.AlertType.ERROR, "Failed to update the student " + studentId + e.getMessage()).show();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+
+            StudentTM selectedStudent = tblStudent.getSelectionModel().getSelectedItem();
+            selectedStudent.setNIC(NIC);
+            selectedStudent.setName(name);
+            selectedStudent.setGender(gender);
+            selectedStudent.setBirthday(birthday);
+            selectedStudent.setAge(age);
+            selectedStudent.setAddress(address);
+            tblStudent.refresh();
+        }
+        btnAddNew.fire();
     }
+
+    private boolean existStudent(String studentId) {
+        return studentBO.ifStudentExist(studentId);
+    }
+
 
     public void updateOnAction(ActionEvent actionEvent) {
     }
 
     public void deleteOnAction(ActionEvent actionEvent) {
+        String studentId = tblStudent.getSelectionModel().getSelectedItem().getStudentId();
+        try {
+            if (!existStudent(studentId)) {
+                new Alert(Alert.AlertType.ERROR, "There is no such student associated with the id " + studentId).show();
+            }
+            studentBO.delete(studentId);
+            tblStudent.getItems().remove(tblStudent.getSelectionModel().getSelectedItem());
+            tblStudent.getSelectionModel().clearSelection();
+            initUI();
+
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR, "Failed to delete the student " + studentId).show();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
-    public void addNewOnAction(ActionEvent actionEvent) {
+    public String addNewOnAction(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
+        return studentBO.generateNewID();
+
+    }
+
+    private String getLastStudentId() {
+        List<StudentTM> tempStudentList = new ArrayList<>(tblStudent.getItems());
+        Collections.sort(tempStudentList);
+        return tempStudentList.get(tempStudentList.size() - 1).getStudentId();
     }
 }

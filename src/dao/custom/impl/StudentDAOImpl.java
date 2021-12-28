@@ -6,6 +6,7 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import util.FactoryConfiguration;
 
+import java.sql.ResultSet;
 import java.util.List;
 
 public class StudentDAOImpl implements StudentDAO {
@@ -56,4 +57,16 @@ public class StudentDAOImpl implements StudentDAO {
     public List<Student> findAll() {
         return null;
     }
+
+   /* public String generateNewID() {
+        ResultSet rst = CrudUtil.executeQuery("SELECT customerId FROM Customer ORDER BY customerId DESC LIMIT 1;");
+        if (rst.next()) {
+            String id = rst.getString("customerId");
+            int newCustomerId = Integer.parseInt(id.replace("C", "")) + 1;
+            return String.format("C%03d", newCustomerId);
+        } else {
+            return "C001";
+        }
+    }
+    }*/
 }

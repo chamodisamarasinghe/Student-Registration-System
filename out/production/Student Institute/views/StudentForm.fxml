@@ -36,124 +36,133 @@
                   <Image url="@../assests/icons8-home-50.png" />
                </image>
             </ImageView>
-            <Text fill="#ebdc0a" layoutX="749.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Student Registration" wrappingWidth="473.6708984375">
+            <Text fill="#0c69eb" layoutX="749.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Student Registration" wrappingWidth="473.6708984375">
                <font>
                   <Font name="System Bold Italic" size="39.0" />
                </font>
             </Text>
+            <ImageView fitHeight="35.0" fitWidth="39.0" layoutX="320.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assests/icons8-education-50.png" />
+               </image>
+            </ImageView>
          </children>
       </AnchorPane>
-      <TextField fx:id="txtName" alignment="CENTER" layoutX="323.0" layoutY="173.0" prefHeight="49.0" prefWidth="447.0" promptText="Student Name" style="-fx-background-color: #000059;" stylesheets="@styles/StudentForm.css">
+      <TextField fx:id="txtName" alignment="CENTER" layoutX="45.0" layoutY="500.0" prefHeight="49.0" prefWidth="417.0" promptText="Student Name" style="-fx-border-color: #000059; -fx-border-width: 5;" stylesheets="@styles/StudentForm.css">
          <font>
             <Font name="System Bold" size="19.0" />
          </font>
       </TextField>
-      <TextField fx:id="txtNIC" alignment="CENTER" layoutX="35.0" layoutY="173.0" prefHeight="49.0" prefWidth="264.0" promptText="NIC" style="-fx-background-color: #000059;">
+      <TextField fx:id="txtNIC" alignment="CENTER" layoutX="45.0" layoutY="422.0" prefHeight="49.0" prefWidth="417.0" promptText="NIC" style="-fx-border-color: #000059; -fx-border-width: 5;">
          <font>
             <Font name="System Bold" size="19.0" />
          </font>
       </TextField>
-      <TextField fx:id="txtAddress" alignment="CENTER" layoutX="1535.0" layoutY="173.0" prefHeight="49.0" prefWidth="348.0" promptText="Address" style="-fx-background-color: #000059;">
+      <TextField fx:id="txtAddress" alignment="CENTER" layoutX="42.0" layoutY="898.0" prefHeight="49.0" prefWidth="404.0" promptText="Address" style="-fx-border-color: #000059; -fx-border-width: 5;">
          <font>
             <Font name="System Bold" size="19.0" />
          </font>
       </TextField>
-      <TextField alignment="CENTER_RIGHT" layoutX="1013.0" layoutY="172.0" prefHeight="49.0" prefWidth="348.0" promptText="Birthday" style="-fx-background-color: #000059;">
+      <TextField fx:id="txtBirthday" alignment="CENTER_RIGHT" layoutX="45.0" layoutY="734.0" prefHeight="49.0" prefWidth="404.0" promptText="Birthday" style="-fx-border-color: #000059; -fx-border-width: 5;">
          <font>
             <Font name="System Bold" size="19.0" />
          </font>
       </TextField>
-      <TextField fx:id="txtAge" alignment="CENTER" layoutX="1377.0" layoutY="173.0" prefHeight="49.0" prefWidth="143.0" promptText="Age" style="-fx-background-color: #000059;">
+      <TextField fx:id="txtAge" alignment="CENTER" layoutX="45.0" layoutY="815.0" prefHeight="49.0" prefWidth="404.0" promptText="Age" style="-fx-border-color: #000059; -fx-border-width: 5;">
          <font>
             <Font name="System Bold" size="19.0" />
          </font>
       </TextField>
-      <TableView fx:id="tblStudent" layoutX="16.0" layoutY="440.0" prefHeight="546.0" prefWidth="1868.0" stylesheets="@styles/StudentForm.css">
+      <TableView fx:id="tblStudent" layoutX="593.0" layoutY="260.0" prefHeight="729.0" prefWidth="1286.0" stylesheets="@styles/StudentForm.css">
         <columns>
-          <TableColumn prefWidth="225.00003051757812" text="Id" />
-          <TableColumn prefWidth="251.99996948242188" text="NIC" />
-            <TableColumn prefWidth="294.0" text="Name" />
-            <TableColumn prefWidth="237.0" text="Gendr" />
-            <TableColumn prefWidth="296.0" text="Birthday" />
-            <TableColumn prefWidth="258.0" text="Age" />
-            <TableColumn prefWidth="305.0" text="Address" />
+          <TableColumn fx:id="colId" prefWidth="137.0" text="Id" />
+          <TableColumn fx:id="colNIC" prefWidth="162.0" text="NIC" />
+            <TableColumn fx:id="colName" prefWidth="196.0" text="Name" />
+            <TableColumn fx:id="colGender" prefWidth="185.0" text="Gender" />
+            <TableColumn fx:id="colBirthday" prefWidth="215.0" text="Birthday" />
+            <TableColumn fx:id="colAge" minWidth="0.0" prefWidth="156.0" text="Age" />
+            <TableColumn fx:id="colAddress" prefWidth="292.0" text="Address" />
         </columns>
       </TableView>
-      <JFXButton buttonType="RAISED" layoutX="1594.0" layoutY="246.0" prefHeight="56.0" prefWidth="264.0" style="-fx-background-color: #0A0AFF;" text="Add" textFill="#e8e8e8">
-         <font>
-            <Font name="System Bold" size="26.0" />
-         </font>
-      </JFXButton>
-      <JFXButton buttonType="RAISED" layoutX="1594.0" layoutY="309.0" prefHeight="56.0" prefWidth="264.0" style="-fx-background-color: green;" text="Update" textFill="#e8e8e8">
-         <font>
-            <Font name="System Bold" size="26.0" />
-         </font>
-      </JFXButton>
-      <JFXButton buttonType="RAISED" layoutX="1594.0" layoutY="375.0" prefHeight="56.0" prefWidth="264.0" style="-fx-background-color: red;" text="Delete" textFill="#e8e8e8">
-         <font>
-            <Font name="System Bold" size="26.0" />
-         </font>
-      </JFXButton>
-      <ComboBox fx:id="cmbGender" layoutX="794.0" layoutY="172.0" prefHeight="49.0" prefWidth="203.0" promptText="Gendr" />
-      <TextField fx:id="txtId" alignment="CENTER" layoutX="35.0" layoutY="98.0" prefHeight="49.0" prefWidth="264.0" promptText="Id" style="-fx-background-color: #000059;">
+      <ComboBox fx:id="cmbGender" layoutX="45.0" layoutY="581.0" prefHeight="49.0" prefWidth="417.0" promptText="Gendr" />
+      <TextField fx:id="txtId" alignment="CENTER" layoutX="45.0" layoutY="348.0" prefHeight="49.0" prefWidth="417.0" promptText="Id" style="-fx-border-color: #000059; -fx-border-width: 5;">
          <font>
             <Font name="System Bold" size="19.0" />
          </font>
       </TextField>
-      <TextField fx:id="txtGender" alignment="CENTER" layoutX="794.0" layoutY="238.0" prefHeight="49.0" prefWidth="203.0" promptText="Gender" style="-fx-background-color: #000059;">
+      <TextField fx:id="txtGender" alignment="CENTER" layoutX="45.0" layoutY="655.0" prefHeight="49.0" prefWidth="404.0" promptText="Gender" style="-fx-border-color: #000059; -fx-border-width: 5;">
          <font>
             <Font name="System Bold" size="19.0" />
          </font>
       </TextField>
-      <ImageView fitHeight="35.0" fitWidth="39.0" layoutX="511.0" layoutY="262.0" pickOnBounds="true" preserveRatio="true">
+      <DatePicker layoutX="117.0" layoutY="743.0" prefHeight="31.0" prefWidth="235.0" />
+      <AnchorPane layoutX="598.0" layoutY="102.0" prefHeight="145.0" prefWidth="1264.0" style="-fx-background-color: black;">
+         <children>
+            <JFXButton fx:id="btnAdd" buttonType="RAISED" layoutX="74.0" layoutY="45.0" onAction="#addOnAction" prefHeight="56.0" prefWidth="264.0" style="-fx-background-color: #0A0AFF;" text="Add" textFill="#e8e8e8">
+               <font>
+                  <Font name="System Bold" size="26.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="btnUpdate" buttonType="RAISED" layoutX="512.0" layoutY="51.0" onAction="#updateOnAction" prefHeight="56.0" prefWidth="264.0" style="-fx-background-color: green;" text="Update" textFill="#e8e8e8">
+               <font>
+                  <Font name="System Bold" size="26.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="btnDelete" buttonType="RAISED" layoutX="948.0" layoutY="51.0" onAction="#deleteOnAction" prefHeight="56.0" prefWidth="264.0" style="-fx-background-color: red;" text="Delete" textFill="#e8e8e8">
+               <font>
+                  <Font name="System Bold" size="26.0" />
+               </font>
+            </JFXButton>
+            <ImageView fitHeight="49.0" fitWidth="42.0" layoutX="88.0" layoutY="52.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assests/icons8-add-50.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="522.0" layoutY="62.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assests/icons8-available-updates-50.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="49.0" fitWidth="42.0" layoutX="962.0" layoutY="58.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assests/icons8-dustbin-64.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <ImageView fitHeight="198.0" fitWidth="291.0" layoutX="264.0" layoutY="102.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../assests/icons8-education-50.png" />
+            <Image url="@../assests/student.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="35.0" fitWidth="39.0" layoutX="1388.0" layoutY="180.0" pickOnBounds="true" preserveRatio="true">
+      <JFXButton fx:id="btnAddNew" buttonType="RAISED" layoutX="45.0" layoutY="247.0" onAction="#addNewOnAction" prefHeight="56.0" prefWidth="221.0" style="-fx-background-color: #7BA6B4;" text="Add New" textFill="#e8e8e8">
+         <font>
+            <Font name="System Bold" size="26.0" />
+         </font>
+      </JFXButton>
+      <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="58.0" layoutY="507.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../assests/icons8-age-50.png" />
+            <Image url="@../assests/icons8-user-24.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="49.0" fitWidth="42.0" layoutX="1612.0" layoutY="379.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="58.0" layoutY="429.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../assests/icons8-dustbin-64.png" />
+            <Image url="@../assests/icons8-card-payment-24.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="1605.0" layoutY="320.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="58.0" layoutY="662.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../assests/icons8-available-updates-50.png" />
+            <Image url="@../assests/icons8-lgbtq-24.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="49.0" fitWidth="42.0" layoutX="1602.0" layoutY="253.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="57.0" layoutY="741.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assests/icons8-birthday-cake-24.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="35.0" fitWidth="42.0" layoutX="51.0" layoutY="258.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assests/icons8-add-50.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="44.0" layoutY="180.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../assests/icons8-identity-theft-50.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="35.0" fitWidth="39.0" layoutX="342.0" layoutY="179.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../assests/icons8-user-male-30.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="35.0" fitWidth="39.0" layoutX="806.0" layoutY="246.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../assests/icons8-gender-64.png" />
-         </image>
-      </ImageView>
-      <DatePicker layoutX="1081.0" layoutY="182.0" prefHeight="31.0" prefWidth="185.0" />
-      <ImageView fitHeight="35.0" fitWidth="39.0" layoutX="1024.0" layoutY="180.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../assests/icons8-birth-date-50.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="35.0" fitWidth="39.0" layoutX="1544.0" layoutY="179.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../assests/icons8-address-50.png" />
          </image>
       </ImageView>
    </children>

@@ -1,6 +1,10 @@
 package views.tdm;
 
-public class StudentTM {
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+public class StudentTM implements Comparable<StudentTM>{
     private String studentId;
     private String NIC;
     private String name;
@@ -89,5 +93,10 @@ public class StudentTM {
                 ", age=" + age +
                 ", address='" + address + '\'' +
                 '}';
+    }
+
+    @Override
+    public int compareTo(StudentTM o) {
+        return studentId.compareTo(o.getStudentId());
     }
 }

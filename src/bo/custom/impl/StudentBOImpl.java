@@ -7,6 +7,7 @@ import dao.custom.impl.StudentDAOImpl;
 import dto.StudentDTO;
 import entity.Student;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class StudentBOImpl implements StudentBO {
@@ -48,4 +49,21 @@ public class StudentBOImpl implements StudentBO {
                 studentDTO.getAddress()
         ));
     }
+
+    @Override
+    public ArrayList<StudentDTO> getAllStudents() {
+        return null;
+    }
+
+    @Override
+    public boolean ifStudentExist(String studentId) {
+        return false;
+    }
+
+    @Override
+    public String generateNewID() {
+        return null;
+    }
+
+
 }
