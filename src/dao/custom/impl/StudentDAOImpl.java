@@ -58,15 +58,4 @@ public class StudentDAOImpl implements StudentDAO {
         return null;
     }
 
-   /* public String generateNewID() {
-        ResultSet rst = CrudUtil.executeQuery("SELECT customerId FROM Customer ORDER BY customerId DESC LIMIT 1;");
-        if (rst.next()) {
-            String id = rst.getString("customerId");
-            int newCustomerId = Integer.parseInt(id.replace("C", "")) + 1;
-            return String.format("C%03d", newCustomerId);
-        } else {
-            return "C001";
-        }
-    }
-    }*/
 }

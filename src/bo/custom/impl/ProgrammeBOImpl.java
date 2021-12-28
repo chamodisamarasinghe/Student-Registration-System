@@ -8,6 +8,7 @@ import dto.ProgrammeDTO;
 import entity.Programme;
 import entity.Student;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ProgrammeBOImpl implements ProgrammeBO {
@@ -43,5 +44,10 @@ public class ProgrammeBOImpl implements ProgrammeBO {
                 programmeDTO.getDuration(),
                 programmeDTO.getFee()
         ));
+    }
+
+    @Override
+    public ArrayList<ProgrammeDTO> getAllProgrammes() {
+        return null;
     }
 }

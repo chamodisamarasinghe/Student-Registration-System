@@ -82,12 +82,12 @@ public class StudentFormController {
     }
 
     private void loadAllStudents() {
-        tblStudent.getItems().clear();
+       /* tblStudent.getItems().clear();
         ArrayList<StudentDTO> allStudents = studentBO.getAllStudents();
         for (StudentDTO student : allStudents) {
             tblStudent.getItems().add(new StudentTM(student.getStudentId(), student.getNIC(), student.getName(),
                     student.getGender(), student.getBirthday(), student.getAge(), student.getAddress()));
-        }
+        }*/
 
     }
 
@@ -99,16 +99,16 @@ public class StudentFormController {
         txtBirthday.clear();
         txtAge.clear();
         txtAddress.clear();
-        txtId.setDisable(true);
-        txtNIC.setDisable(true);
-        txtName.setDisable(true);
-        txtGender.setDisable(true);
-        txtBirthday.setDisable(true);
-        txtAge.setDisable(true);
-        txtAddress.setDisable(true);
+       /* txtId.setDisable(false);
+        txtNIC.setDisable(false);
+        txtName.setDisable(false);
+        txtGender.setDisable(false);
+        txtBirthday.setDisable(false);
+        txtAge.setDisable(false);
+        txtAddress.setDisable(false);
         txtId.setEditable(false);
         btnAdd.setDisable(true);
-        btnDelete.setDisable(true);
+        btnDelete.setDisable(true);*/
     }
 
     public void openHomePage(ActionEvent actionEvent) throws IOException {
@@ -124,7 +124,7 @@ public class StudentFormController {
         String name = txtName.getText();
         String gender = txtGender.getText();
         String birthday = txtBirthday.getText();
-        int age = Integer.parseInt(String.valueOf(txtAge));
+        int age = txtAge.getPrefColumnCount();
         String address = txtAddress.getText();
         if (!name.matches("[A-Za-z ]+")) {
             new Alert(Alert.AlertType.ERROR, "Invalid name").show();
