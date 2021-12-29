@@ -7,6 +7,7 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import util.FactoryConfiguration;
 
+import javax.persistence.Query;
 import java.util.List;
 
 public class ProgrammeDAOImpl implements ProgrammeDAO {
@@ -55,7 +56,18 @@ public class ProgrammeDAOImpl implements ProgrammeDAO {
 
     @Override
     public List<Programme> findAll() {
-        return null;
+        Session session = FactoryConfiguration.getInstance().getSession();
+        Transaction transaction = session.beginTransaction();
+
+        List<Programme> list = null;
+
+        Query programmes = session.createQuery("from Programme ");
+        list = programmes.getResultList();
+
+        transaction.commit();
+
+        session.close();
+        return list;
     }
 
     public boolean ifProgrammeExist(String programmeId) {

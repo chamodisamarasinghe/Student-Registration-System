@@ -5,6 +5,7 @@ import dao.DAOFactory;
 import dao.DAOType;
 import dao.custom.impl.ProgrammeDAOImpl;
 import dto.ProgrammeDTO;
+import dto.StudentDTO;
 import entity.Programme;
 import entity.Student;
 
@@ -48,7 +49,18 @@ public class ProgrammeBOImpl implements ProgrammeBO {
 
     @Override
     public ArrayList<ProgrammeDTO> getAllProgrammes() {
-        return null;
+        List<Programme> all = programmeDAO.findAll();
+        ArrayList<ProgrammeDTO> dtoList = new ArrayList<>();
+
+        for (Programme programme : all) {
+            dtoList.add(new ProgrammeDTO(
+                    programme.getProgrammeId(),
+                    programme.getProgrammeName(),
+                    programme.getDuration(),
+                    programme.getFee()
+            ));
+        }
+        return dtoList;
     }
 
     @Override

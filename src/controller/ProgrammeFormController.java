@@ -70,12 +70,12 @@ public class ProgrammeFormController {
     }
 
     private void loadProgrammes() {
-       /* tblProgramme.getItems().clear();
+        tblProgramme.getItems().clear();
         ArrayList<ProgrammeDTO> allProgrammes = programmeBO.getAllProgrammes();
         for (ProgrammeDTO programme : allProgrammes) {
             tblProgramme.getItems().add(new ProgrammeTM(programme.getProgrammeId(), programme.getProgrammeName(),
                     programme.getDuration(), programme.getFee()));
-        }*/
+        }
 
     }
 
@@ -124,6 +124,8 @@ public class ProgrammeFormController {
             e.printStackTrace();
 
         }
+
+        loadProgrammes();
     }
 
         public void updateOnAction (ActionEvent actionEvent){
