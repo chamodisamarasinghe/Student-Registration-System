@@ -16,4 +16,6 @@ public interface ProgrammeBO extends SuperBO {
     public boolean update(ProgrammeDTO programmeDTO) throws Exception;
 
     ArrayList<ProgrammeDTO> getAllProgrammes();
+
+    boolean ifProgrammeExist(String programmeId);
 }

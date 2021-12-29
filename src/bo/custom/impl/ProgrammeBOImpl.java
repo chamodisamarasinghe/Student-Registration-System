@@ -50,4 +50,9 @@ public class ProgrammeBOImpl implements ProgrammeBO {
     public ArrayList<ProgrammeDTO> getAllProgrammes() {
         return null;
     }
+
+    @Override
+    public boolean ifProgrammeExist(String programmeId) {
+        return programmeDAO.ifProgrammeExist(programmeId);
+    }
 }

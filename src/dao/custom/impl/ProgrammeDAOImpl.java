@@ -57,4 +57,8 @@ public class ProgrammeDAOImpl implements ProgrammeDAO {
     public List<Programme> findAll() {
         return null;
     }
+
+    public boolean ifProgrammeExist(String programmeId) {
+        return false;
+    }
 }

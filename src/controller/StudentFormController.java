@@ -79,6 +79,13 @@ public class StudentFormController {
         });
         txtAddress.setOnAction(event -> btnAdd.fire());
         loadAllStudents();
+
+        cmbGender.getItems().addAll("Male", "Female");
+        cmbGender.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            System.out.println(oldValue);
+            System.out.println(newValue);
+            txtGender.setText(String.valueOf(newValue));
+        });
     }
 
     private void loadAllStudents() {

@@ -5,6 +5,7 @@ import bo.custom.ProgrammeBO;
 import bo.custom.StudentBO;
 import com.jfoenix.controls.JFXButton;
 import dto.ProgrammeDTO;
+import dto.StudentDTO;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -99,14 +100,40 @@ public class ProgrammeFormController {
         window.setScene(new Scene(load));
     }
 
-    public void addOnAction(ActionEvent actionEvent) {
+    public void addOnAction(ActionEvent actionEvent) throws Exception {
+        String programmeId = txtId.getText();
+        String programmeName = txtProgramme.getText();
+        String duration = txtDuration.getText();
+        double fee = Double.parseDouble(txtFee.getText());
 
+        try {
+            if (existProgramme(programmeId)) {
+                new Alert(Alert.AlertType.ERROR, programmeId + " already exists").show();
 
+            } else {
+                ProgrammeDTO programmeDTO = new ProgrammeDTO(programmeId, programmeName, duration, fee);
+                programmeBO.add(programmeDTO);
+
+                new Alert(Alert.AlertType.CONFIRMATION, "Saved..").show();
+
+            }
+
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR, "Failed to save the customer " + e.getMessage()).show();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+
+        }
     }
 
-    public void updateOnAction(ActionEvent actionEvent) {
-    }
+        public void updateOnAction (ActionEvent actionEvent){
+        }
 
-    public void deleteOnAction(ActionEvent actionEvent) {
-    }
-}
+        public void deleteOnAction (ActionEvent actionEvent){
+        }
+
+
+        private boolean existProgramme (String programmeId){
+            return programmeBO.ifProgrammeExist(programmeId);
+        }
+        }

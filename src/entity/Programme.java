@@ -20,6 +20,8 @@ public class Programme implements SuperEntity {
     public Programme() {
     }
 
+
+
     public Programme(String programmeId, String programmeName, String duration, double fee, List<Student> studentList) {
         this.setProgrammeId(programmeId);
         this.setProgrammeName(programmeName);
@@ -29,7 +31,10 @@ public class Programme implements SuperEntity {
     }
 
     public Programme(String programmeId, String programmeName, String duration, double fee) {
-
+        this.programmeId = programmeId;
+        this.programmeName = programmeName;
+        this.duration = duration;
+        this.fee = fee;
     }
 
     public String getProgrammeId() {
