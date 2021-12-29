@@ -4,6 +4,7 @@ import bo.BoFactory;
 import bo.custom.StudentBO;
 import com.jfoenix.controls.JFXButton;
 import dto.StudentDTO;
+import entity.Student;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -224,6 +225,40 @@ public class StudentFormController {
 
 
     public void updateOnAction(ActionEvent actionEvent) {
+        String studentId = txtId.getText();
+        String NIC = txtNIC.getText();
+        String name = txtName.getText();
+        String gender = txtGender.getText();
+        String birthday = txtBirthday.getText();
+        int age = Integer.parseInt(txtAge.getText());
+        String address = txtAddress.getText();
+
+        try {
+            if(studentBO.update(new StudentDTO(
+                    studentId,
+                    NIC,
+                    name,
+                    gender,
+                    birthday,
+                    age,
+                    address
+            ))){
+                //new Alert(Alert.AlertType.CONFIRMATION, "Updated").showAndWait();
+                studentBO.findAll();
+                txtId.setText(null);
+                txtNIC.setText(null);
+                txtName.setText(null);
+                txtGender.setText(null);
+                txtBirthday.setText(null);
+                txtAge.setText(null);
+                txtAddress.setText(null);
+
+            }else {
+                new Alert(Alert.AlertType.ERROR, "Something Happened").show();
+            }
+        } catch (Exception e) {
+            new Alert(Alert.AlertType.ERROR, "Something Happened").show();
+        }
     }
 
     public void deleteOnAction(ActionEvent actionEvent) {

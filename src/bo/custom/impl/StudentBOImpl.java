@@ -6,7 +6,11 @@ import dao.DAOType;
 import dao.custom.impl.StudentDAOImpl;
 import dto.StudentDTO;
 import entity.Student;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+import util.FactoryConfiguration;
 
+import javax.persistence.Query;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -29,13 +33,25 @@ public class StudentBOImpl implements StudentBO {
     }
 
     @Override
-    public List<StudentDTO> findAll() throws Exception {
-        return null;
+    public List<Student> findAll() throws Exception {
+        Session session = FactoryConfiguration.getInstance().getSession();
+        Transaction transaction = session.beginTransaction();
+
+        List<Student> list = null;
+
+        Query students = session.createQuery("from Student ");
+        list = ((org.hibernate.query.Query) students).list();
+
+        transaction.commit();
+
+        session.close();
+        return list;
     }
 
+
     @Override
-    public boolean delete(String id) throws Exception {
-        return studentDAO.delete(id);
+    public boolean delete(String studentId) throws Exception {
+        return studentDAO.delete(studentId);
     }
 
     @Override
