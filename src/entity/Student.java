@@ -1,8 +1,6 @@
 package entity;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,13 +15,16 @@ public class Student implements SuperEntity {
     private int age;
     private String address;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     private List<Programme> programmeList = new ArrayList<>();
 
-    public Student() {
+    @OneToOne(mappedBy = "student")
+    private List<Registration> registration;
+
+    public Student(String studentId, String nic, String name, String gender, String birthday, int age, String address) {
     }
 
-    public Student(String studentId, String NIC, String name, String gender, String birthday, int age, String address, List<Programme> programmeList) {
+    public Student(String studentId, String NIC, String name, String gender, String birthday, int age, String address, List<Programme> programmeList, List<Registration> registration) {
         this.setStudentId(studentId);
         this.setNIC(NIC);
         this.setName(name);
@@ -32,9 +33,7 @@ public class Student implements SuperEntity {
         this.setAge(age);
         this.setAddress(address);
         this.setProgrammeList(programmeList);
-    }
-
-    public Student(String studentId, String nic, String name, String gender, String birthday, int age, String address) {
+        this.setRegistrations(registration);
     }
 
     public String getStudentId() {
@@ -101,6 +100,14 @@ public class Student implements SuperEntity {
         this.programmeList = programmeList;
     }
 
+    public List<Registration> getRegistrations() {
+        return registration;
+    }
+
+    public void setRegistrations(List<Registration> registration) {
+        this.registration = registration;
+    }
+
     @Override
     public String toString() {
         return "Student{" +
@@ -112,6 +119,7 @@ public class Student implements SuperEntity {
                 ", age=" + age +
                 ", address='" + address + '\'' +
                 ", programmeList=" + programmeList +
+                ", registrations=" + registration +
                 '}';
     }
 }

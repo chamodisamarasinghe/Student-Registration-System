@@ -21,8 +21,9 @@ public class AppInitializer extends Application {
         primaryStage.setTitle("Sipsewana Institute");
         primaryStage.getIcons().add(new Image("assests/icons8-school-50.png"));
         primaryStage.show();
-    }
+
     Session session = FactoryConfiguration.getInstance().getSession();
-    Transaction transaction = session.beginTransaction();
+    session.close();
     }
+}
 

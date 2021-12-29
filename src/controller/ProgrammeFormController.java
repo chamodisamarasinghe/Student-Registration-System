@@ -83,13 +83,13 @@ public class ProgrammeFormController {
         txtProgramme.clear();
         txtDuration.clear();
         txtFee.clear();
-        txtId.setDisable(true);
+       /* txtId.setDisable(false);
         txtProgramme.setDisable(true);
         txtDuration.setDisable(true);
         txtFee.setDisable(true);
         txtId.setEditable(false);
         btnSave.setDisable(true);
-        btnDelete.setDisable(true);
+        btnDelete.setDisable(true);*/
     }
 
     public void openHomePage(ActionEvent actionEvent) throws IOException {

@@ -2,7 +2,6 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
@@ -95,7 +94,6 @@
             <Font name="System Bold" size="19.0" />
          </font>
       </TextField>
-      <DatePicker layoutX="117.0" layoutY="743.0" prefHeight="31.0" prefWidth="235.0" />
       <AnchorPane layoutX="598.0" layoutY="102.0" prefHeight="145.0" prefWidth="1264.0" style="-fx-background-color: black;">
          <children>
             <JFXButton fx:id="btnAdd" buttonType="RAISED" layoutX="74.0" layoutY="45.0" onAction="#addOnAction" prefHeight="56.0" prefWidth="264.0" style="-fx-background-color: #0A0AFF;" text="Add" textFill="#e8e8e8">

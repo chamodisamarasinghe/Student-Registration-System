@@ -23,8 +23,7 @@ public class FactoryConfiguration {
         }
 
 
-          Configuration configuration =new Configuration().addAnnotatedClass(
-                  Student.class).addAnnotatedClass(Programme.class);
+          Configuration configuration =new Configuration().addAnnotatedClass(Student.class).addAnnotatedClass(Programme.class).addAnnotatedClass(Registration.class);
             sessionFactory = configuration.buildSessionFactory();
         }
 
