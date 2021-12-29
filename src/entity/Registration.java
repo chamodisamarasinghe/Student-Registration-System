@@ -4,10 +4,9 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 @Entity
-public class Registration {
+public class Registration implements SuperEntity{
     @Id
     private String registerId;
-    private String studentId;
     private String registerDate;
     private String time;
     private double payment;
@@ -18,9 +17,8 @@ public class Registration {
     public Registration() {
     }
 
-    public Registration(String registerId, String studentId, String registerDate, String time, double payment, Student student) {
+    public Registration(String registerId, String registerDate, String time, double payment, Student student) {
         this.setRegisterId(registerId);
-        this.setStudentId(studentId);
         this.setRegisterDate(registerDate);
         this.setTime(time);
         this.setPayment(payment);
@@ -33,14 +31,6 @@ public class Registration {
 
     public void setRegisterId(String registerId) {
         this.registerId = registerId;
-    }
-
-    public String getStudentId() {
-        return studentId;
-    }
-
-    public void setStudentId(String studentId) {
-        this.studentId = studentId;
     }
 
     public String getRegisterDate() {
@@ -79,7 +69,6 @@ public class Registration {
     public String toString() {
         return "Registration{" +
                 "registerId='" + registerId + '\'' +
-                ", studentId='" + studentId + '\'' +
                 ", registerDate='" + registerDate + '\'' +
                 ", time='" + time + '\'' +
                 ", payment=" + payment +

@@ -3,6 +3,7 @@ package bo.custom;
 import bo.SuperBO;
 import dto.StudentDTO;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,7 +18,7 @@ public interface StudentBO extends SuperBO {
 
     ArrayList<StudentDTO> getAllStudents();
 
-    boolean ifStudentExist(String studentId);
+    boolean ifStudentExist(String studentId) throws SQLException, ClassNotFoundException;
 
     String generateNewID();
 }

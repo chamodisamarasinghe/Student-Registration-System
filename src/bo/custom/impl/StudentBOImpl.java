@@ -7,6 +7,7 @@ import dao.custom.impl.StudentDAOImpl;
 import dto.StudentDTO;
 import entity.Student;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -52,12 +53,28 @@ public class StudentBOImpl implements StudentBO {
 
     @Override
     public ArrayList<StudentDTO> getAllStudents() {
-        return null;
+        List<Student> all = studentDAO.findAll();
+        ArrayList<StudentDTO> dtoList = new ArrayList<>();
+
+        for (Student student : all) {
+            dtoList.add(new StudentDTO(
+                    student.getStudentId(),
+                    student.getNIC(),
+                    student.getName(),
+                    student.getGender(),
+                    student.getBirthday(),
+                    student.getAge(),
+                    student.getAddress()
+
+            ));
+        }
+        return dtoList;
+
     }
 
     @Override
-    public boolean ifStudentExist(String studentId) {
-        return false;
+    public boolean ifStudentExist(String studentId) throws SQLException, ClassNotFoundException {
+        return studentDAO.ifStudentExist(studentId);
     }
 
     @Override

@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@Entity(name = "student")
+@Entity
 public class Student implements SuperEntity {
     @Id
     private String studentId;
@@ -18,10 +18,22 @@ public class Student implements SuperEntity {
     @ManyToMany(fetch = FetchType.EAGER)
     private List<Programme> programmeList = new ArrayList<>();
 
-    @OneToOne(mappedBy = "student")
+    @OneToMany(mappedBy = "student")
     private List<Registration> registration;
 
-    public Student(String studentId, String nic, String name, String gender, String birthday, int age, String address) {
+    public Student(String studentId, String NIC, String name, String gender, String birthday, int age, String address) {
+        this.studentId = studentId;
+        this.NIC = NIC;
+        this.name = name;
+        this.gender = gender;
+        this.birthday = birthday;
+        this.age = age;
+        this.address =address;
+
+    }
+
+
+    public Student() {
     }
 
     public Student(String studentId, String NIC, String name, String gender, String birthday, int age, String address, List<Programme> programmeList, List<Registration> registration) {
@@ -35,6 +47,9 @@ public class Student implements SuperEntity {
         this.setProgrammeList(programmeList);
         this.setRegistrations(registration);
     }
+
+
+
 
     public String getStudentId() {
         return studentId;

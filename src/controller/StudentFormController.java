@@ -82,12 +82,12 @@ public class StudentFormController {
     }
 
     private void loadAllStudents() {
-       /* tblStudent.getItems().clear();
+        tblStudent.getItems().clear();
         ArrayList<StudentDTO> allStudents = studentBO.getAllStudents();
         for (StudentDTO student : allStudents) {
             tblStudent.getItems().add(new StudentTM(student.getStudentId(), student.getNIC(), student.getName(),
                     student.getGender(), student.getBirthday(), student.getAge(), student.getAddress()));
-        }*/
+        }
 
     }
 
@@ -119,7 +119,38 @@ public class StudentFormController {
     }
 
     public void addOnAction(ActionEvent actionEvent) throws Exception {
+
         String studentId = txtId.getText();
+        String NIC = txtNIC.getText();
+        String name = txtName.getText();
+        String gender = txtGender.getText();
+        String birthday = txtBirthday.getText();
+        int age = Integer.parseInt(txtAge.getText());
+        String address = txtAddress.getText();
+
+
+
+        try {
+            if (existStudent(studentId)) {
+                new Alert(Alert.AlertType.ERROR, studentId + " already exists").show();
+
+            } else {
+                StudentDTO studentDTO = new StudentDTO(studentId, NIC, name, gender, birthday, age, address);
+                studentBO.add(studentDTO);
+
+                new Alert(Alert.AlertType.CONFIRMATION, "Saved..").show();
+
+            }
+
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR, "Failed to save the customer " + e.getMessage()).show();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+
+
+       /* String studentId = txtId.getText();
         String NIC = txtNIC.getText();
         String name = txtName.getText();
         String gender = txtGender.getText();
@@ -175,11 +206,13 @@ public class StudentFormController {
             selectedStudent.setAddress(address);
             tblStudent.refresh();
         }
-        btnAddNew.fire();
+        btnAddNew.fire();*/
+
+        loadAllStudents();
     }
 
-    private boolean existStudent(String studentId) {
-        return studentBO.ifStudentExist(studentId);
+    private boolean existStudent(String id) throws SQLException, ClassNotFoundException {
+        return studentBO.ifStudentExist(id);
     }
 
 

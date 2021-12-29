@@ -6,7 +6,7 @@ import javax.persistence.ManyToMany;
 import java.util.ArrayList;
 import java.util.List;
 
-@Entity(name = "programme")
+@Entity
 public class Programme implements SuperEntity {
     @Id
     private String programmeId;
