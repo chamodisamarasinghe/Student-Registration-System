@@ -41,9 +41,9 @@ public class StudentDAOImpl implements StudentDAO {
         Session session = FactoryConfiguration.getInstance().getSession();
         Transaction transaction = session.beginTransaction();
 
+        Student  student = session.get(Student.class,studentId);
 
-
-        session.delete(studentId);
+        session.delete(student);
 
         transaction.commit();
         session.close();

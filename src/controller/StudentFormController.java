@@ -3,6 +3,7 @@ package controller;
 import bo.BoFactory;
 import bo.custom.StudentBO;
 import com.jfoenix.controls.JFXButton;
+import dao.custom.impl.StudentDAOImpl;
 import dto.StudentDTO;
 import entity.Student;
 import javafx.event.ActionEvent;
@@ -107,16 +108,16 @@ public class StudentFormController {
         txtBirthday.clear();
         txtAge.clear();
         txtAddress.clear();
-       /* txtId.setDisable(false);
+        txtId.setDisable(false);
         txtNIC.setDisable(false);
         txtName.setDisable(false);
         txtGender.setDisable(false);
         txtBirthday.setDisable(false);
         txtAge.setDisable(false);
         txtAddress.setDisable(false);
-        txtId.setEditable(false);
-        btnAdd.setDisable(true);
-        btnDelete.setDisable(true);*/
+        txtId.setEditable(true);
+        btnAdd.setDisable(false);
+        btnDelete.setDisable(true);
     }
 
     public void openHomePage(ActionEvent actionEvent) throws IOException {
@@ -158,12 +159,12 @@ public class StudentFormController {
 
 
 
-       /* String studentId = txtId.getText();
+     /*   String studentId = txtId.getText();
         String NIC = txtNIC.getText();
         String name = txtName.getText();
         String gender = txtGender.getText();
         String birthday = txtBirthday.getText();
-        int age = txtAge.getPrefColumnCount();
+        int age = Integer.parseInt(txtAge.getText());
         String address = txtAddress.getText();
         if (!name.matches("[A-Za-z ]+")) {
             new Alert(Alert.AlertType.ERROR, "Invalid name").show();
@@ -243,7 +244,7 @@ public class StudentFormController {
                     age,
                     address
             ))){
-                //new Alert(Alert.AlertType.CONFIRMATION, "Updated").showAndWait();
+
                 studentBO.findAll();
                 txtId.setText(null);
                 txtNIC.setText(null);
@@ -265,7 +266,7 @@ public class StudentFormController {
         String studentId = tblStudent.getSelectionModel().getSelectedItem().getStudentId();
         try {
             if (!existStudent(studentId)) {
-                new Alert(Alert.AlertType.ERROR, "There is no such student associated with the id " + studentId).show();
+                new Alert(Alert.AlertType.CONFIRMATION, "Deleted" + studentId).show();
             }
             studentBO.delete(studentId);
             tblStudent.getItems().remove(tblStudent.getSelectionModel().getSelectedItem());
@@ -279,6 +280,9 @@ public class StudentFormController {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+
+
     }
 
     public String addNewOnAction(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
