@@ -14,7 +14,7 @@
 
 <AnchorPane fx:id="registerFormContext" prefHeight="1000.0" prefWidth="1900.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.RegisterFormController">
    <children>
-      <AnchorPane prefHeight="82.0" prefWidth="1901.0" style="-fx-background-color: #00758C;">
+      <AnchorPane prefHeight="82.0" prefWidth="1901.0" style="-fx-background-color: #00758C;" stylesheets="@styles/RegistrationForm.css">
          <children>
             <Text fill="#171717" layoutX="718.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Register a New Student">
                <font>
@@ -121,7 +121,7 @@
             </TextField>
          </children>
       </AnchorPane>
-      <TableView fx:id="tblRegistration" layoutX="14.0" layoutY="457.0" prefHeight="522.0" prefWidth="1496.0">
+      <TableView fx:id="tblRegistration" layoutX="14.0" layoutY="457.0" prefHeight="522.0" prefWidth="1496.0" stylesheets="@styles/RegistrationForm.css">
         <columns>
           <TableColumn prefWidth="128.0" text="Student Id" />
           <TableColumn prefWidth="154.0" text="Programme Id" />
