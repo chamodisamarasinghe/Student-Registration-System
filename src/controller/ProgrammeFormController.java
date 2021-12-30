@@ -129,9 +129,51 @@ public class ProgrammeFormController {
     }
 
         public void updateOnAction (ActionEvent actionEvent){
+            String programmeId = txtId.getText();
+            String programmeName = txtProgramme.getText();
+            String duration = txtDuration.getText();
+            double fee = Double.parseDouble(txtFee.getText());
+
+            try {
+                if(programmeBO.update(new ProgrammeDTO(
+                        programmeId,
+                        programmeName,
+                        duration,
+                        fee
+                ))){
+
+                    programmeBO.findAll();
+                    txtId.setText(null);
+                    txtProgramme.setText(null);
+                    txtDuration.setText(null);
+                    txtFee.setText(null);
+
+                }else {
+                    new Alert(Alert.AlertType.CONFIRMATION, "Updated").show();
+                }
+            } catch (Exception e) {
+                new Alert(Alert.AlertType.ERROR, "Something Happened").show();
+            }
         }
 
         public void deleteOnAction (ActionEvent actionEvent){
+            String programmeId = tblProgramme.getSelectionModel().getSelectedItem().getProgrammeId();
+            try {
+                if (!existProgramme(programmeId)) {
+                    new Alert(Alert.AlertType.CONFIRMATION, "Deleted" + programmeId).show();
+                }
+                programmeBO.delete(programmeId);
+                tblProgramme.getItems().remove(tblProgramme.getSelectionModel().getSelectedItem());
+                tblProgramme.getSelectionModel().clearSelection();
+                initUI();
+
+            } catch (SQLException e) {
+                new Alert(Alert.AlertType.ERROR, "Failed to delete the student " + programmeId).show();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
 
 

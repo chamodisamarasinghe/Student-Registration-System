@@ -255,7 +255,7 @@ public class StudentFormController {
                 txtAddress.setText(null);
 
             }else {
-                new Alert(Alert.AlertType.ERROR, "Something Happened").show();
+                new Alert(Alert.AlertType.CONFIRMATION, "Updated").show();
             }
         } catch (Exception e) {
             new Alert(Alert.AlertType.ERROR, "Something Happened").show();

@@ -36,13 +36,13 @@ public class ProgrammeDAOImpl implements ProgrammeDAO {
     }
 
     @Override
-    public boolean delete(String s) {
+    public boolean delete(String programmeId) {
         Session session = FactoryConfiguration.getInstance().getSession();
         Transaction transaction = session.beginTransaction();
 
-        Programme programme = session.get(Programme.class, s);
+        Programme programme = session.get(Programme.class, programmeId);
 
-        session.delete(s);
+        session.delete(programme);
 
         transaction.commit();
         session.close();
