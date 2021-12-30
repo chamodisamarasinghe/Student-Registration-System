@@ -41,6 +41,12 @@ public class ProgrammeFormController {
     public TextField txtFee;
 
     public void initialize(){
+        colId.setStyle("-fx-border-color: black;-fx-table-cell-border-color:black;");
+        colProgramme.setStyle("-fx-border-color: black;-fx-table-cell-border-color:black;");
+        colDuration.setStyle("-fx-border-color: black;-fx-table-cell-border-color:black;");
+        colFee.setStyle("-fx-border-color: black;-fx-table-cell-border-color:black;");
+
+
         tblProgramme.getColumns().get(0).setCellValueFactory(new PropertyValueFactory<>("programmeId"));
         tblProgramme.getColumns().get(1).setCellValueFactory(new PropertyValueFactory<>("programmeName"));
         tblProgramme.getColumns().get(2).setCellValueFactory(new PropertyValueFactory<>("duration"));
@@ -154,6 +160,8 @@ public class ProgrammeFormController {
             } catch (Exception e) {
                 new Alert(Alert.AlertType.ERROR, "Something Happened").show();
             }
+
+            loadProgrammes();
         }
 
         public void deleteOnAction (ActionEvent actionEvent){

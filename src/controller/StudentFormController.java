@@ -48,6 +48,16 @@ public class StudentFormController {
     public TextField txtBirthday;
 
     public void initialize(){
+        colId.setStyle("-fx-border-color: black;-fx-table-cell-border-color:black;");
+        colNIC.setStyle("-fx-border-color: black;-fx-table-cell-border-color:black;");
+        colName.setStyle("-fx-border-color: black;-fx-table-cell-border-color:black;");
+        colGender.setStyle("-fx-border-color: black;-fx-table-cell-border-color:black;");
+        colBirthday.setStyle("-fx-border-color: black;-fx-table-cell-border-color:black;");
+        colAge.setStyle("-fx-border-color: black;-fx-table-cell-border-color:black;");
+        colAddress.setStyle("-fx-border-color: black;-fx-table-cell-border-color:black;");
+
+
+
         tblStudent.getColumns().get(0).setCellValueFactory(new PropertyValueFactory<>("studentId"));
         tblStudent.getColumns().get(1).setCellValueFactory(new PropertyValueFactory<>("NIC"));
         tblStudent.getColumns().get(2).setCellValueFactory(new PropertyValueFactory<>("name"));
@@ -260,6 +270,8 @@ public class StudentFormController {
         } catch (Exception e) {
             new Alert(Alert.AlertType.ERROR, "Something Happened").show();
         }
+
+        loadAllStudents();
     }
 
     public void deleteOnAction(ActionEvent actionEvent) {
