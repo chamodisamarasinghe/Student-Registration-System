@@ -134,7 +134,7 @@
             <TableColumn prefWidth="189.0" text="Payment" />
         </columns>
       </TableView>
-      <JFXButton buttonType="RAISED" layoutX="1548.0" layoutY="718.0" prefHeight="46.0" prefWidth="320.0" style="-fx-background-color: #1E9E1E;" text="Add" textFill="#fcf5f5">
+      <JFXButton buttonType="RAISED" layoutX="1548.0" layoutY="718.0" onAction="#addOnAction" prefHeight="46.0" prefWidth="320.0" style="-fx-background-color: #1E9E1E;" text="Add" textFill="#fcf5f5">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
@@ -144,7 +144,7 @@
             <Image url="@../assests/icons8-add-50.png" />
          </image>
       </ImageView>
-      <JFXButton buttonType="RAISED" layoutX="1548.0" layoutY="863.0" prefHeight="46.0" prefWidth="320.0" style="-fx-background-color: red;" text="Cancel" textFill="#fcf5f5">
+      <JFXButton buttonType="RAISED" layoutX="1548.0" layoutY="863.0" onAction="#cancelOnAction" prefHeight="46.0" prefWidth="320.0" style="-fx-background-color: red;" text="Cancel" textFill="#fcf5f5">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
@@ -154,7 +154,7 @@
             <Image url="@../assests/icons8-dustbin-64.png" />
          </image>
       </ImageView>
-      <JFXButton buttonType="RAISED" layoutX="1548.0" layoutY="790.0" prefHeight="46.0" prefWidth="320.0" style="-fx-background-color: #005800;" text="Confirm" textFill="#fcf5f5">
+      <JFXButton buttonType="RAISED" layoutX="1548.0" layoutY="790.0" onAction="#confirmOnAction" prefHeight="46.0" prefWidth="320.0" style="-fx-background-color: #005800;" text="Confirm" textFill="#fcf5f5">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
@@ -174,6 +174,20 @@
             <Label layoutX="14.0" layoutY="21.0" prefHeight="58.0" prefWidth="236.0" text="Payment:" textFill="#eb1b1b">
                <font>
                   <Font name="System Bold" size="40.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="41.0" layoutY="99.0" prefHeight="72.0" prefWidth="523.0" style="-fx-background-color: #123456; -fx-background-radius: 30;">
+         <children>
+            <Label fx:id="lblRegId" layoutX="262.0" layoutY="13.0" prefHeight="46.0" prefWidth="227.0" text="R-001" textFill="#f8f6f6">
+               <font>
+                  <Font name="System Bold" size="31.0" />
+               </font>
+            </Label>
+            <Label layoutX="30.0" layoutY="13.0" prefHeight="46.0" prefWidth="214.0" text="Register Id:" textFill="#f8f6f6">
+               <font>
+                  <Font name="System Bold" size="31.0" />
                </font>
             </Label>
          </children>

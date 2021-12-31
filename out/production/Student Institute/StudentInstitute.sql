@@ -53,7 +53,6 @@ DROP TABLE IF EXISTS `Register Detail`;
 CREATE TABLE IF NOT EXISTS `Register Detail`(
    programmeId VARCHAR(6),
    registerId VARCHAR(6),
-   qty INT(11),
    fee DOUBLE,
    CONSTRAINT PRIMARY KEY (programmeId, registerId),
    CONSTRAINT FOREIGN KEY (programmeId) REFERENCES Programme(programmeId) ON DELETE CASCADE ON UPDATE CASCADE ,

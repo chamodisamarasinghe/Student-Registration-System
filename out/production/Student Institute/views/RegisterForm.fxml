@@ -14,7 +14,7 @@
 
 <AnchorPane fx:id="registerFormContext" prefHeight="1000.0" prefWidth="1900.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.RegisterFormController">
    <children>
-      <AnchorPane prefHeight="82.0" prefWidth="1901.0" style="-fx-background-color: #00758C;">
+      <AnchorPane prefHeight="82.0" prefWidth="1901.0" style="-fx-background-color: #00758C;" stylesheets="@styles/RegistrationForm.css">
          <children>
             <Text fill="#171717" layoutX="718.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Register a New Student">
                <font>
@@ -40,33 +40,33 @@
       </AnchorPane>
       <AnchorPane layoutX="14.0" layoutY="196.0" prefHeight="115.0" prefWidth="1859.0" style="-fx-background-color: #3C565B;">
          <children>
-            <ComboBox layoutX="14.0" layoutY="30.0" prefHeight="43.0" prefWidth="214.0" promptText="Student Id" />
-            <TextField layoutX="256.0" layoutY="26.0" prefHeight="43.0" prefWidth="236.0" promptText="NIC">
+            <ComboBox fx:id="cmbStudentId" layoutX="14.0" layoutY="30.0" prefHeight="43.0" prefWidth="214.0" promptText="Student Id" />
+            <TextField fx:id="txtNIC" layoutX="256.0" layoutY="30.0" prefHeight="43.0" prefWidth="236.0" promptText="NIC">
                <font>
                   <Font name="System Bold" size="19.0" />
                </font>
             </TextField>
-            <TextField layoutX="514.0" layoutY="26.0" prefHeight="50.0" prefWidth="334.0" promptText="Name">
+            <TextField fx:id="txtName" layoutX="514.0" layoutY="26.0" prefHeight="50.0" prefWidth="334.0" promptText="Name">
                <font>
                   <Font name="System Bold" size="19.0" />
                </font>
             </TextField>
-            <TextField layoutX="875.0" layoutY="26.0" prefHeight="50.0" prefWidth="204.0" promptText="Gender">
+            <TextField fx:id="txtGender" layoutX="875.0" layoutY="26.0" prefHeight="50.0" prefWidth="204.0" promptText="Gender">
                <font>
                   <Font name="System Bold" size="19.0" />
                </font>
             </TextField>
-            <TextField layoutX="1136.0" layoutY="26.0" prefHeight="43.0" prefWidth="236.0" promptText="Birthday">
+            <TextField fx:id="txtBirthday" layoutX="1136.0" layoutY="26.0" prefHeight="43.0" prefWidth="236.0" promptText="Birthday">
                <font>
                   <Font name="System Bold" size="19.0" />
                </font>
             </TextField>
-            <TextField layoutX="1417.0" layoutY="26.0" prefHeight="43.0" prefWidth="103.0" promptText="Age">
+            <TextField fx:id="txtAge" layoutX="1417.0" layoutY="26.0" prefHeight="43.0" prefWidth="103.0" promptText="Age">
                <font>
                   <Font name="System Bold" size="19.0" />
                </font>
             </TextField>
-            <TextField layoutX="1564.0" layoutY="26.0" prefHeight="50.0" prefWidth="277.0" promptText="Address">
+            <TextField fx:id="txtAddress" layoutX="1564.0" layoutY="26.0" prefHeight="50.0" prefWidth="277.0" promptText="Address">
                <font>
                   <Font name="System Bold" size="19.0" />
                </font>
@@ -75,7 +75,7 @@
       </AnchorPane>
       <AnchorPane layoutX="1008.0" layoutY="99.0" prefHeight="72.0" prefWidth="418.0" style="-fx-background-color: black; -fx-background-radius: 30;">
          <children>
-            <Label layoutX="174.0" layoutY="15.0" prefHeight="46.0" prefWidth="236.0" text="2021/12/13" textFill="#f8f6f6">
+            <Label fx:id="lblDate" layoutX="174.0" layoutY="15.0" prefHeight="46.0" prefWidth="236.0" text="2021/12/13" textFill="#f8f6f6">
                <font>
                   <Font name="System Bold" size="31.0" />
                </font>
@@ -89,7 +89,7 @@
       </AnchorPane>
       <AnchorPane layoutX="1455.0" layoutY="99.0" prefHeight="72.0" prefWidth="418.0" style="-fx-background-color: black; -fx-background-radius: 30;">
          <children>
-            <Label layoutX="174.0" layoutY="15.0" prefHeight="46.0" prefWidth="236.0" text="05 : 00" textFill="#f8f6f6">
+            <Label fx:id="lblTime" layoutX="174.0" layoutY="15.0" prefHeight="46.0" prefWidth="236.0" text="05 : 00" textFill="#f8f6f6">
                <font>
                   <Font name="System Bold" size="31.0" />
                </font>
@@ -103,25 +103,25 @@
       </AnchorPane>
       <AnchorPane layoutX="14.0" layoutY="326.0" prefHeight="115.0" prefWidth="1859.0" style="-fx-background-color: #123456;">
          <children>
-            <ComboBox layoutX="14.0" layoutY="30.0" prefHeight="43.0" prefWidth="296.0" promptText="Programme Id" />
-            <TextField layoutX="401.0" layoutY="27.0" prefHeight="50.0" prefWidth="411.0" promptText="Programme">
+            <ComboBox fx:id="cmbProgrammeId" layoutX="14.0" layoutY="30.0" prefHeight="43.0" prefWidth="296.0" promptText="Programme Id" />
+            <TextField fx:id="txtProgramme" layoutX="401.0" layoutY="27.0" prefHeight="50.0" prefWidth="411.0" promptText="Programme">
                <font>
                   <Font name="System Bold" size="19.0" />
                </font>
             </TextField>
-            <TextField layoutX="943.0" layoutY="27.0" prefHeight="50.0" prefWidth="362.0" promptText="Duration">
+            <TextField fx:id="txtDuration" layoutX="943.0" layoutY="27.0" prefHeight="50.0" prefWidth="362.0" promptText="Duration">
                <font>
                   <Font name="System Bold" size="19.0" />
                </font>
             </TextField>
-            <TextField layoutX="1501.0" layoutY="27.0" prefHeight="50.0" prefWidth="305.0" promptText="Fee">
+            <TextField fx:id="txtFee" layoutX="1501.0" layoutY="27.0" prefHeight="50.0" prefWidth="305.0" promptText="Fee">
                <font>
                   <Font name="System Bold" size="19.0" />
                </font>
             </TextField>
          </children>
       </AnchorPane>
-      <TableView layoutX="14.0" layoutY="457.0" prefHeight="522.0" prefWidth="1496.0">
+      <TableView fx:id="tblRegistration" layoutX="14.0" layoutY="457.0" prefHeight="522.0" prefWidth="1496.0" stylesheets="@styles/RegistrationForm.css">
         <columns>
           <TableColumn prefWidth="128.0" text="Student Id" />
           <TableColumn prefWidth="154.0" text="Programme Id" />
@@ -134,7 +134,7 @@
             <TableColumn prefWidth="189.0" text="Payment" />
         </columns>
       </TableView>
-      <JFXButton buttonType="RAISED" layoutX="1548.0" layoutY="718.0" prefHeight="46.0" prefWidth="320.0" style="-fx-background-color: #1E9E1E;" text="Add" textFill="#fcf5f5">
+      <JFXButton buttonType="RAISED" layoutX="1548.0" layoutY="718.0" onAction="#addOnAction" prefHeight="46.0" prefWidth="320.0" style="-fx-background-color: #1E9E1E;" text="Add" textFill="#fcf5f5">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
@@ -144,7 +144,7 @@
             <Image url="@../assests/icons8-add-50.png" />
          </image>
       </ImageView>
-      <JFXButton buttonType="RAISED" layoutX="1548.0" layoutY="863.0" prefHeight="46.0" prefWidth="320.0" style="-fx-background-color: red;" text="Cancel" textFill="#fcf5f5">
+      <JFXButton buttonType="RAISED" layoutX="1548.0" layoutY="863.0" onAction="#cancelOnAction" prefHeight="46.0" prefWidth="320.0" style="-fx-background-color: red;" text="Cancel" textFill="#fcf5f5">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
@@ -154,7 +154,7 @@
             <Image url="@../assests/icons8-dustbin-64.png" />
          </image>
       </ImageView>
-      <JFXButton buttonType="RAISED" layoutX="1548.0" layoutY="790.0" prefHeight="46.0" prefWidth="320.0" style="-fx-background-color: #005800;" text="Confirm" textFill="#fcf5f5">
+      <JFXButton buttonType="RAISED" layoutX="1548.0" layoutY="790.0" onAction="#confirmOnAction" prefHeight="46.0" prefWidth="320.0" style="-fx-background-color: #005800;" text="Confirm" textFill="#fcf5f5">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
@@ -166,7 +166,7 @@
       </ImageView>
       <AnchorPane layoutX="1535.0" layoutY="500.0" prefHeight="169.0" prefWidth="347.0" style="-fx-background-color: #C0C0C0;">
          <children>
-            <Label layoutX="14.0" layoutY="97.0" prefHeight="58.0" prefWidth="305.0" text="0.00 " textFill="#eb1b1b">
+            <Label fx:id="lblTotal" layoutX="14.0" layoutY="97.0" prefHeight="58.0" prefWidth="305.0" text="0.00 " textFill="#eb1b1b">
                <font>
                   <Font name="System Bold" size="40.0" />
                </font>
