@@ -11,6 +11,7 @@ import org.hibernate.Transaction;
 import util.FactoryConfiguration;
 
 import javax.persistence.Query;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -77,7 +78,7 @@ public class ProgrammeBOImpl implements ProgrammeBO {
     }
 
     @Override
-    public boolean ifProgrammeExist(String programmeId) {
+    public boolean ifProgrammeExist(String programmeId) throws SQLException, ClassNotFoundException {
         return programmeDAO.ifProgrammeExist(programmeId);
     }
 }

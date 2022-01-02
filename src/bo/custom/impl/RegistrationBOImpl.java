@@ -25,9 +25,6 @@ public class RegistrationBOImpl implements RegistrationBO {
     private final RegistrationDAO registrationDAO = (RegistrationDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOType.REGISTRATION);
 
 
-
-
-
     @Override
     public ArrayList<StudentDTO> getAllStudents() throws Exception {
        ArrayList<StudentDTO> allStudents = new ArrayList<>();
@@ -108,8 +105,7 @@ public class RegistrationBOImpl implements RegistrationBO {
     @Override
     public ProgrammeDTO searchProgramme(String programmeId) throws Exception {
         Programme programme = programmeDAO.find(programmeId);
-       return new ProgrammeDTO(programme.getProgrammeId(),programme.getProgrammeName(),
-                programme.getDuration(),programme.getFee());
+        return new ProgrammeDTO(programme.getProgrammeId(),programme.getProgrammeName(),programme.getDuration(),programme.getFee());
     }
 
     @Override
@@ -117,7 +113,10 @@ public class RegistrationBOImpl implements RegistrationBO {
         return registrationDAO.ifRegisterExist(programmeId);
     }
 
+    @Override
     public boolean ifRegisterExist(String registerId) throws SQLException, ClassNotFoundException {
         return registrationDAO.ifRegisterExist(registerId);
     }
+
+
 }
