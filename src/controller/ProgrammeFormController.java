@@ -212,7 +212,7 @@ public class ProgrammeFormController {
         }
 
 
-        private boolean existProgramme (String programmeId){
+        private boolean existProgramme (String programmeId) throws SQLException, ClassNotFoundException {
             return programmeBO.ifProgrammeExist(programmeId);
         }
 

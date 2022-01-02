@@ -1,6 +1,7 @@
 package controller;
 
 import bo.BoFactory;
+import bo.custom.RegistrationBO;
 import bo.custom.impl.RegistrationBOImpl;
 import dto.ProgrammeDTO;
 import dto.StudentDTO;
@@ -21,7 +22,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class RegisterFormController {
-    private final RegistrationBOImpl registrationBOImpl = (RegistrationBOImpl)  BoFactory.getBoFactory().getBO(BoFactory.BoTypes.REGISTRATION);
+    private final RegistrationBO registrationBO = (RegistrationBO)  BoFactory.getBoFactory().getBO(BoFactory.BoTypes.REGISTRATION);
 
     public AnchorPane registerFormContext;
     public Label lblDate;
@@ -48,7 +49,7 @@ public class RegisterFormController {
     public TableColumn colDuration;
     public TableColumn colProgramme;
     public TableColumn colPayment;
-    private Object RegistrationTM;
+
 
 
     public void initialize(){
@@ -71,7 +72,7 @@ public class RegisterFormController {
 
         cmbStudentId.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             try {
-                StudentDTO studentDTO = registrationBOImpl.searchStudent(newValue + "");
+                StudentDTO studentDTO = registrationBO.searchStudent(newValue + "");
                 txtNIC.setText(studentDTO.getNIC());
                 txtName.setText(studentDTO.getName());
                 txtGender.setText(studentDTO.getGender());
@@ -80,7 +81,7 @@ public class RegisterFormController {
                 txtAddress.setText(studentDTO.getAddress());
 
             } catch (SQLException e) {
-                new Alert(Alert.AlertType.ERROR, "Failed to find the customer " + newValue + "" + e).show();
+                new Alert(Alert.AlertType.ERROR, "Failed to find the student " + newValue + "" + e).show();
             } catch (ClassNotFoundException e) {
                 e.printStackTrace();
             } catch (Exception e) {
@@ -100,13 +101,13 @@ public class RegisterFormController {
 
         cmbProgrammeId.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             try {
-                ProgrammeDTO programmeDTO = registrationBOImpl.searchProgramme(newValue + "");
+                ProgrammeDTO programmeDTO = registrationBO.searchProgramme(newValue + "");
                 txtProgramme.setText(programmeDTO.getProgrammeName());
                 txtDuration.setText(programmeDTO.getDuration());
                 txtFee.setText(String.valueOf(programmeDTO.getFee()));
 
             } catch (SQLException e) {
-                new Alert(Alert.AlertType.ERROR, "Failed to find the customer " + newValue + "" + e).show();
+                new Alert(Alert.AlertType.ERROR, "Failed to find the programme " + newValue + "" + e).show();
             } catch (ClassNotFoundException e) {
                 e.printStackTrace();
             } catch (Exception e) {
@@ -117,10 +118,10 @@ public class RegisterFormController {
 
             }
 
-    private void loadProgrammeIds() throws Exception{
+    private void loadProgrammeIds() {
         ArrayList<ProgrammeDTO> all = null;
         try {
-            all = registrationBOImpl.getAllProgrammes();
+            all = registrationBO.getAllProgrammes();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         } catch (ClassNotFoundException e) {
@@ -131,6 +132,8 @@ public class RegisterFormController {
         for (ProgrammeDTO dto : all) {
             cmbProgrammeId.getItems().add(dto.getProgrammeId());
         }
+
+
     }
 
 
@@ -138,18 +141,18 @@ public class RegisterFormController {
     }
 
     private boolean existStudent(String studentId) throws SQLException, ClassNotFoundException {
-        return registrationBOImpl.ifStudentExist(studentId);
+        return registrationBO.ifStudentExist(studentId);
     }
 
     private boolean existProgramme(String programmeId) throws SQLException, ClassNotFoundException {
-        return registrationBOImpl.ifProgrammeExist(programmeId);
+        return registrationBO.ifProgrammeExist(programmeId);
     }
 
 
     private void loadAllStudentIds() throws Exception {
         ArrayList<StudentDTO> all = null;
         try {
-            all = registrationBOImpl.getAllStudents();
+            all = registrationBO.getAllStudents();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         } catch (ClassNotFoundException e) {
@@ -253,7 +256,7 @@ public class RegisterFormController {
     }
 
     private boolean isExists(String registerId) throws SQLException, ClassNotFoundException {
-        return registrationBOImpl.ifRegisterExist(registerId);
+        return registrationBO.ifRegisterExist(registerId);
     }
 
     public void cancelOnAction(ActionEvent actionEvent) {
