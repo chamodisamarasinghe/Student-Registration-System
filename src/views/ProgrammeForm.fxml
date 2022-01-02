@@ -37,7 +37,7 @@
             </ImageView>
          </children>
       </AnchorPane>
-      <TextField fx:id="txtId" alignment="CENTER" layoutX="60.0" layoutY="396.0" prefHeight="55.0" prefWidth="435.0" promptText="Programme Id" style="-fx-border-color: #000059; -fx-border-width: 5;">
+      <TextField fx:id="txtId" alignment="CENTER" layoutX="60.0" layoutY="396.0" onKeyReleased="#textFieldsKeyReleased" prefHeight="55.0" prefWidth="435.0" promptText="Programme Id" style="-fx-border-color: #000059; -fx-border-width: 5;">
          <font>
             <Font name="System Bold" size="21.0" />
          </font>
@@ -65,17 +65,17 @@
             <Font name="System Bold" size="26.0" />
          </font>
       </JFXButton>
-      <TextField fx:id="txtProgramme" alignment="CENTER" layoutX="60.0" layoutY="484.0" prefHeight="55.0" prefWidth="435.0" promptText="Programme" style="-fx-border-color: #000059; -fx-border-width: 5;">
+      <TextField fx:id="txtProgramme" alignment="CENTER" layoutX="60.0" layoutY="484.0" onKeyReleased="#textFieldsKeyReleased" prefHeight="55.0" prefWidth="435.0" promptText="Programme" style="-fx-border-color: #000059; -fx-border-width: 5;">
          <font>
             <Font name="System Bold" size="21.0" />
          </font>
       </TextField>
-      <TextField fx:id="txtDuration" alignment="CENTER" layoutX="60.0" layoutY="589.0" prefHeight="55.0" prefWidth="435.0" promptText="Duration" style="-fx-border-color: #000059; -fx-border-width: 5;">
+      <TextField fx:id="txtDuration" alignment="CENTER" layoutX="60.0" layoutY="589.0" onKeyReleased="#textFieldsKeyReleased" prefHeight="55.0" prefWidth="435.0" promptText="Duration" style="-fx-border-color: #000059; -fx-border-width: 5;">
          <font>
             <Font name="System Bold" size="21.0" />
          </font>
       </TextField>
-      <TextField fx:id="txtFee" alignment="CENTER" layoutX="60.0" layoutY="696.0" prefHeight="55.0" prefWidth="435.0" promptText="Fee(LKR)" style="-fx-border-color: #000059; -fx-border-width: 5;">
+      <TextField fx:id="txtFee" alignment="CENTER" layoutX="60.0" layoutY="696.0" onKeyReleased="#textFieldsKeyReleased" prefHeight="55.0" prefWidth="435.0" promptText="Fee(LKR)" style="-fx-border-color: #000059; -fx-border-width: 5;">
          <font>
             <Font name="System Bold" size="21.0" />
          </font>
