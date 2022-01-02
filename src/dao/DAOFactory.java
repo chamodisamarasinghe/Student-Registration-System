@@ -1,6 +1,7 @@
 package dao;
 
 import dao.custom.impl.ProgrammeDAOImpl;
+import dao.custom.impl.RegistrationDAOImpl;
 import dao.custom.impl.StudentDAOImpl;
 
 public class DAOFactory {
@@ -8,19 +9,27 @@ public class DAOFactory {
 
     private DAOFactory(){}
 
-    public static DAOFactory getInstance(){
-        return (null == daoFactory) ? daoFactory = new DAOFactory() : daoFactory;
+    public static DAOFactory getDaoFactory(){
+        if (daoFactory == null) {
+            daoFactory = new DAOFactory();
+        }
+        return daoFactory;
     }
 
-    public <T extends SuperDAO>T getDAO(DAOType daoType){
+    public SuperDAO getDAO(DAOType daoType){
         switch (daoType){
             case STUDENT:
-                return (T) new StudentDAOImpl();
+                return new StudentDAOImpl();
             case PROGRAMME:
-                return (T) new ProgrammeDAOImpl();
-
+                return  new ProgrammeDAOImpl();
+            case REGISTRATION:
+                return  new RegistrationDAOImpl();
             default:
                 return null;
         }
+    }
+
+    public enum DAOType {
+        STUDENT, PROGRAMME, REGISTRATION
     }
 }
