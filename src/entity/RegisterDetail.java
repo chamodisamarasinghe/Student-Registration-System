@@ -1,25 +1,17 @@
 package entity;
 
 public class RegisterDetail {
-    private String programmeId;
     private String registerId;
-    private double fee;
+    private String studentId;
+    private String programmeId;
 
     public RegisterDetail() {
     }
 
-    public RegisterDetail(String programmeId, String registerId, double fee) {
-        this.setProgrammeId(programmeId);
+    public RegisterDetail(String registerId, String studentId, String programmeId) {
         this.setRegisterId(registerId);
-        this.setFee(fee);
-    }
-
-    public String getProgrammeId() {
-        return programmeId;
-    }
-
-    public void setProgrammeId(String programmeId) {
-        this.programmeId = programmeId;
+        this.setStudentId(studentId);
+        this.setProgrammeId(programmeId);
     }
 
     public String getRegisterId() {
@@ -30,20 +22,28 @@ public class RegisterDetail {
         this.registerId = registerId;
     }
 
-    public double getFee() {
-        return fee;
+    public String getStudentId() {
+        return studentId;
     }
 
-    public void setFee(double fee) {
-        this.fee = fee;
+    public void setStudentId(String studentId) {
+        this.studentId = studentId;
+    }
+
+    public String getProgrammeId() {
+        return programmeId;
+    }
+
+    public void setProgrammeId(String programmeId) {
+        this.programmeId = programmeId;
     }
 
     @Override
     public String toString() {
         return "RegisterDetail{" +
-                "programmeId='" + programmeId + '\'' +
-                ", registerId='" + registerId + '\'' +
-                ", fee=" + fee +
+                "registerId='" + registerId + '\'' +
+                ", studentId='" + studentId + '\'' +
+                ", programmeId='" + programmeId + '\'' +
                 '}';
     }
 }
