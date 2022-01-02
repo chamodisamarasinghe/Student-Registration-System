@@ -9,9 +9,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public interface RegistrationBO extends SuperBO {
-    ArrayList<StudentDTO> getAllStudents()throws SQLException, ClassNotFoundException;
+    ArrayList<StudentDTO> getAllStudents() throws Exception;
 
-    StudentDTO searchStudent(String studentId)throws SQLException, ClassNotFoundException;
+    StudentDTO searchStudent(String studentId) throws Exception;
 
     boolean ifStudentExist(String studentId)throws SQLException, ClassNotFoundException;
 
@@ -19,9 +19,9 @@ public interface RegistrationBO extends SuperBO {
 
     String generateNewOrderId()throws SQLException, ClassNotFoundException;
 
-    ArrayList<ProgrammeDTO> getAllProgrammes()throws SQLException, ClassNotFoundException;
+    ArrayList<ProgrammeDTO> getAllProgrammes() throws Exception;
 
-    ProgrammeDTO searchProgramme(String programmeId)throws SQLException, ClassNotFoundException;
+    ProgrammeDTO searchProgramme(String programmeId) throws Exception;
 
     boolean ifProgrammeExist(String programmeId) throws SQLException, ClassNotFoundException;
 
