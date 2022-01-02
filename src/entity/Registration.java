@@ -9,7 +9,7 @@ public class Registration implements SuperEntity{
     private String registerId;
     private String registerDate;
     private String time;
-    private double payment;
+
 
     @ManyToOne
     private Student student;
@@ -17,12 +17,17 @@ public class Registration implements SuperEntity{
     public Registration() {
     }
 
-    public Registration(String registerId, String registerDate, String time, double payment, Student student) {
+    public Registration(String registerId, String registerDate, String time, Student student) {
         this.setRegisterId(registerId);
         this.setRegisterDate(registerDate);
         this.setTime(time);
-        this.setPayment(payment);
         this.setStudent(student);
+    }
+
+    public Registration(String registerId, String registerDate, String time) {
+        this.registerId = registerId;
+        this.registerDate = registerDate;
+        this.time = time;
     }
 
     public String getRegisterId() {
@@ -49,13 +54,6 @@ public class Registration implements SuperEntity{
         this.time = time;
     }
 
-    public double getPayment() {
-        return payment;
-    }
-
-    public void setPayment(double payment) {
-        this.payment = payment;
-    }
 
     public Student getStudent() {
         return student;
@@ -71,7 +69,6 @@ public class Registration implements SuperEntity{
                 "registerId='" + registerId + '\'' +
                 ", registerDate='" + registerDate + '\'' +
                 ", time='" + time + '\'' +
-                ", payment=" + payment +
                 ", student=" + student +
                 '}';
     }
