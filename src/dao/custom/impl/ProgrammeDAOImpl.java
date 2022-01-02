@@ -50,8 +50,18 @@ public class ProgrammeDAOImpl implements ProgrammeDAO {
     }
 
     @Override
-    public Programme find(String s) {
-        return null;
+    public Programme find(String programmeId) {
+        Session session = FactoryConfiguration.getInstance().getSession();
+        Transaction transaction = session.beginTransaction();
+
+        List<Programme> list = null;
+        String hql = "FROM Programme P WHERE P.programmeId = :programmeId";
+        Query query = session.createQuery(hql).setString("programmeId",programmeId);
+        list = query.getResultList();
+        transaction.commit();
+
+        session.close();
+        return list.get(0);
     }
 
     @Override
