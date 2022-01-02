@@ -15,6 +15,8 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import views.tdm.ProgrammeTM;
@@ -23,6 +25,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.regex.Pattern;
 
 public class ProgrammeFormController {
     private final ProgrammeBO programmeBO = BoFactory.getBoFactory().getBO(BoFactory.BoTypes.PROGRAMME);
@@ -40,7 +44,15 @@ public class ProgrammeFormController {
     public TextField txtDuration;
     public TextField txtFee;
 
+    LinkedHashMap<TextField, Pattern> map = new LinkedHashMap();
+    Pattern programmeIDPattern = Pattern.compile("^(P)[0-9]{3,4}$");
+    Pattern programmePattern = Pattern.compile("^[A-z ]{2,}$");
+    Pattern durationPattern = Pattern.compile("^[0-9]{1,2}$");
+
+
     public void initialize(){
+        storeValidation();
+
         colId.setStyle("-fx-border-color: black;-fx-table-cell-border-color:black;");
         colProgramme.setStyle("-fx-border-color: black;-fx-table-cell-border-color:black;");
         colDuration.setStyle("-fx-border-color: black;-fx-table-cell-border-color:black;");
@@ -72,10 +84,21 @@ public class ProgrammeFormController {
         });
 
         txtFee.setOnAction(event -> btnSave.fire());
-        loadProgrammes();
+        try {
+            loadProgrammes();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
-    private void loadProgrammes() {
+    private void storeValidation() {
+        map.put(txtId, programmeIDPattern);
+        map.put(txtProgramme, programmePattern);
+        map.put(txtDuration, durationPattern);
+
+    }
+
+    private void loadProgrammes() throws Exception {
         tblProgramme.getItems().clear();
         ArrayList<ProgrammeDTO> allProgrammes = programmeBO.getAllProgrammes();
         for (ProgrammeDTO programme : allProgrammes) {
@@ -161,7 +184,11 @@ public class ProgrammeFormController {
                 new Alert(Alert.AlertType.ERROR, "Something Happened").show();
             }
 
-            loadProgrammes();
+            try {
+                loadProgrammes();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
 
         public void deleteOnAction (ActionEvent actionEvent){
@@ -188,4 +215,18 @@ public class ProgrammeFormController {
         private boolean existProgramme (String programmeId){
             return programmeBO.ifProgrammeExist(programmeId);
         }
+
+    public void textFieldsKeyReleased(KeyEvent keyEvent) {
+        Object response = ValidationUtil.validate(map, btnSave);
+
+        if (keyEvent.getCode() == KeyCode.ENTER) {
+            if (response instanceof TextField) {
+                TextField errorText = (TextField) response;
+                errorText.requestFocus();
+            } else if (response instanceof Boolean) {
+                new Alert(Alert.AlertType.INFORMATION, "Added").showAndWait();
+            }
         }
+    }
+
+}
