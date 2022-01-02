@@ -9,9 +9,9 @@ public class BoFactory {
 
     private BoFactory(){}
 
-    public static BoFactory getInstance(){
+   /* public static BoFactory getInstance(){
         return (null == boFactory) ? boFactory = new BoFactory() : boFactory;
-    }
+    }*/
 
     public static BoFactory getBoFactory() {
         if (boFactory == null) {
