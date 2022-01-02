@@ -3,6 +3,7 @@ package controller;
 import bo.BoFactory;
 import bo.custom.RegistrationBO;
 import bo.custom.impl.RegistrationBOImpl;
+import com.jfoenix.controls.JFXButton;
 import dto.ProgrammeDTO;
 import dto.StudentDTO;
 import javafx.collections.ObservableList;
@@ -49,7 +50,7 @@ public class RegisterFormController {
     public TableColumn colDuration;
     public TableColumn colProgramme;
     public TableColumn colPayment;
-
+    public JFXButton btnAdd;
 
 
     public void initialize(){
@@ -171,6 +172,34 @@ public class RegisterFormController {
     }
 
     public void addOnAction(ActionEvent actionEvent) {
+
+        String registerId = lblRegId.getId();
+        String studentID = String.valueOf(cmbStudentId.getValue());
+        String programmeId = String.valueOf(cmbProgrammeId.getValue());
+        String studentName = txtName.getText();
+        String address = txtAddress.getText();
+        String programme = txtProgramme.getText();
+        String duration = txtDuration.getText();
+        double payment = Double.parseDouble(lblTotal.getText());
+
+        boolean exists = tblRegistration.getItems().stream().anyMatch(detail -> detail.getProgrammeId().equals(programmeId));
+
+        if (exists) {
+            RegistrationTM registrationTM = tblRegistration.getItems().stream().filter(detail -> detail.getProgrammeId().equals(programmeId)).findFirst().get();
+
+
+            tblRegistration.refresh();
+        } else {
+            tblRegistration.getItems().add(new RegistrationTM(registerId, studentID, programmeId,studentName,address,programme, duration, payment));
+        }
+        cmbStudentId.getSelectionModel().clearSelection();
+        cmbStudentId.requestFocus();
+       // calculateTotal();
+      //  enableOrDisablePlaceOrderButton();
+
+
+
+
       /*  try {
             String registerId = lblRegId.getId();
             String studentID = String.valueOf(cmbStudentId.getValue());
@@ -210,7 +239,7 @@ public class RegisterFormController {
                 );
 
                 obList.remove(rowNumber);
-               // obList.add(newTm);
+                obList.add(newTm);
             }
             tblRegistration.setItems(obList);
             calculatePayment();
@@ -219,8 +248,8 @@ public class RegisterFormController {
         } catch (Exception e) {
             new Alert(Alert.AlertType.WARNING, e.getMessage()).show();
             e.printStackTrace();
-        }*/
-       /* String itemCode = cmbCode.getSelectionModel().getSelectedItem();
+        }
+        String itemCode = cmbCode.getSelectionModel().getSelectedItem();
         String description = txtDescription.getText();
         String packSize = txtPackSize.getText();
         int qty = Integer.parseInt(txtQty.getText());
