@@ -2,19 +2,21 @@ package bo.custom.impl;
 
 import bo.custom.ProgrammeBO;
 import dao.DAOFactory;
-import dao.DAOType;
-import dao.custom.impl.ProgrammeDAOImpl;
-import dto.ProgrammeDTO;
-import dto.StudentDTO;
-import entity.Programme;
-import entity.Student;
 
+import dao.custom.ProgrammeDAO;
+import dto.ProgrammeDTO;
+import entity.Programme;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+import util.FactoryConfiguration;
+
+import javax.persistence.Query;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ProgrammeBOImpl implements ProgrammeBO {
 
-   ProgrammeDAOImpl programmeDAO = DAOFactory.getInstance().getDAO(DAOType.PROGRAMME);
+   ProgrammeDAO programmeDAO = (ProgrammeDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOType.PROGRAMME);
 
     @Override
     public boolean add(ProgrammeDTO programmeDTO) throws Exception {
@@ -28,8 +30,19 @@ public class ProgrammeBOImpl implements ProgrammeBO {
     }
 
     @Override
-    public List<ProgrammeDTO> findAll() throws Exception {
-        return null;
+    public List<Programme> findAll() throws Exception {
+        Session session = FactoryConfiguration.getInstance().getSession();
+        Transaction transaction = session.beginTransaction();
+
+        List<Programme> list = null;
+
+        Query programmes = session.createQuery("from Programme ");
+        list = ((org.hibernate.query.Query) programmes).list();
+
+        transaction.commit();
+
+        session.close();
+        return list;
     }
 
     @Override
@@ -48,7 +61,7 @@ public class ProgrammeBOImpl implements ProgrammeBO {
     }
 
     @Override
-    public ArrayList<ProgrammeDTO> getAllProgrammes() {
+    public ArrayList<ProgrammeDTO> getAllProgrammes() throws Exception {
         List<Programme> all = programmeDAO.findAll();
         ArrayList<ProgrammeDTO> dtoList = new ArrayList<>();
 
