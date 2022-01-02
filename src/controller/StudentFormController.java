@@ -12,6 +12,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import views.tdm.StudentTM;
@@ -21,7 +23,9 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.regex.Pattern;
 
 public class StudentFormController {
     private final StudentBO studentBO = BoFactory.getBoFactory().getBO(BoFactory.BoTypes.STUDENT);
@@ -47,7 +51,21 @@ public class StudentFormController {
     public JFXButton btnAddNew;
     public TextField txtBirthday;
 
+    LinkedHashMap<TextField, Pattern> map = new LinkedHashMap();
+    Pattern studentIDPattern = Pattern.compile("^(S)[0-9]{3,4}$");
+    Pattern NICPattern = Pattern.compile("^[0-9]{3,10}(V)$");
+    Pattern namePattern = Pattern.compile("^[A-z ]{2,}$");
+    Pattern birthdayPattern = Pattern.compile("^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$");
+    Pattern agePattern = Pattern.compile("^[0-9]{1,2}$");
+    Pattern addressPattern = Pattern.compile("^[A-z ]{3,30}([0-9]{1,2})?$");
+
+
+
+
+
     public void initialize(){
+        storeValidations();
+        
         colId.setStyle("-fx-border-color: black;-fx-table-cell-border-color:black;");
         colNIC.setStyle("-fx-border-color: black;-fx-table-cell-border-color:black;");
         colName.setStyle("-fx-border-color: black;-fx-table-cell-border-color:black;");
@@ -90,7 +108,11 @@ public class StudentFormController {
             }
         });
         txtAddress.setOnAction(event -> btnAdd.fire());
-        loadAllStudents();
+        try {
+            loadAllStudents();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         cmbGender.getItems().addAll("Male", "Female");
         cmbGender.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
@@ -100,7 +122,16 @@ public class StudentFormController {
         });
     }
 
-    private void loadAllStudents() {
+    private void storeValidations() {
+        map.put(txtId, studentIDPattern);
+        map.put(txtNIC, NICPattern);
+        map.put(txtName, namePattern);
+        map.put(txtBirthday, birthdayPattern);
+        map.put(txtAge, agePattern);
+        map.put(txtAddress, addressPattern);
+    }
+
+    private void loadAllStudents() throws Exception {
         tblStudent.getItems().clear();
         ArrayList<StudentDTO> allStudents = studentBO.getAllStudents();
         for (StudentDTO student : allStudents) {
@@ -271,7 +302,11 @@ public class StudentFormController {
             new Alert(Alert.AlertType.ERROR, "Something Happened").show();
         }
 
-        loadAllStudents();
+        try {
+            loadAllStudents();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public void deleteOnAction(ActionEvent actionEvent) {
@@ -307,4 +342,18 @@ public class StudentFormController {
         Collections.sort(tempStudentList);
         return tempStudentList.get(tempStudentList.size() - 1).getStudentId();
     }
+
+    public void textFieldsKeyReleased(KeyEvent keyEvent) {
+        Object response = ValidationUtil.validate(map, btnAdd);
+
+        if (keyEvent.getCode() == KeyCode.ENTER) {
+            if (response instanceof TextField) {
+                TextField errorText = (TextField) response;
+                errorText.requestFocus();
+            } else if (response instanceof Boolean) {
+                new Alert(Alert.AlertType.INFORMATION, "Added").showAndWait();
+            }
+        }
+    }
+
 }
