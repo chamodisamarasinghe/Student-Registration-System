@@ -2,7 +2,9 @@ package bo.custom.impl;
 
 import bo.custom.StudentBO;
 import dao.DAOFactory;
-import dao.DAOType;
+
+import dao.custom.ProgrammeDAO;
+import dao.custom.StudentDAO;
 import dao.custom.impl.StudentDAOImpl;
 import dto.StudentDTO;
 import entity.Student;
@@ -17,7 +19,7 @@ import java.util.List;
 
 public class StudentBOImpl implements StudentBO {
 
-    StudentDAOImpl studentDAO = DAOFactory.getInstance().getDAO(DAOType.STUDENT);
+    StudentDAO studentDAO = (StudentDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOType.STUDENT);
 
     @Override
     public boolean add(StudentDTO studentDTO) throws Exception {
@@ -68,7 +70,7 @@ public class StudentBOImpl implements StudentBO {
     }
 
     @Override
-    public ArrayList<StudentDTO> getAllStudents() {
+    public ArrayList<StudentDTO> getAllStudents() throws Exception {
         List<Student> all = studentDAO.findAll();
         ArrayList<StudentDTO> dtoList = new ArrayList<>();
 

@@ -47,27 +47,27 @@
             </ImageView>
          </children>
       </AnchorPane>
-      <TextField fx:id="txtName" alignment="CENTER" layoutX="45.0" layoutY="500.0" prefHeight="49.0" prefWidth="417.0" promptText="Student Name" style="-fx-border-color: #000059; -fx-border-width: 5;" stylesheets="@styles/StudentForm.css">
+      <TextField fx:id="txtName" alignment="CENTER" layoutX="45.0" layoutY="500.0" onKeyReleased="#textFieldsKeyReleased" prefHeight="49.0" prefWidth="417.0" promptText="Student Name" style="-fx-border-color: #000059; -fx-border-width: 5;" stylesheets="@styles/StudentForm.css">
          <font>
             <Font name="System Bold" size="19.0" />
          </font>
       </TextField>
-      <TextField fx:id="txtNIC" alignment="CENTER" layoutX="45.0" layoutY="422.0" prefHeight="49.0" prefWidth="417.0" promptText="NIC" style="-fx-border-color: #000059; -fx-border-width: 5;">
+      <TextField fx:id="txtNIC" alignment="CENTER" layoutX="45.0" layoutY="422.0" onKeyReleased="#textFieldsKeyReleased" prefHeight="49.0" prefWidth="417.0" promptText="NIC" style="-fx-border-color: #000059; -fx-border-width: 5;">
          <font>
             <Font name="System Bold" size="19.0" />
          </font>
       </TextField>
-      <TextField fx:id="txtAddress" alignment="CENTER" layoutX="42.0" layoutY="898.0" prefHeight="49.0" prefWidth="404.0" promptText="Address" style="-fx-border-color: #000059; -fx-border-width: 5;">
+      <TextField fx:id="txtAddress" alignment="CENTER" layoutX="42.0" layoutY="898.0" onKeyReleased="#textFieldsKeyReleased" prefHeight="49.0" prefWidth="404.0" promptText="Address" style="-fx-border-color: #000059; -fx-border-width: 5;">
          <font>
             <Font name="System Bold" size="19.0" />
          </font>
       </TextField>
-      <TextField fx:id="txtBirthday" alignment="CENTER" layoutX="45.0" layoutY="734.0" prefHeight="49.0" prefWidth="404.0" promptText="Birthday" style="-fx-border-color: #000059; -fx-border-width: 5;">
+      <TextField fx:id="txtBirthday" alignment="CENTER" layoutX="45.0" layoutY="734.0" onKeyReleased="#textFieldsKeyReleased" prefHeight="49.0" prefWidth="404.0" promptText="Birthday" style="-fx-border-color: #000059; -fx-border-width: 5;">
          <font>
             <Font name="System Bold" size="19.0" />
          </font>
       </TextField>
-      <TextField fx:id="txtAge" alignment="CENTER" layoutX="45.0" layoutY="815.0" prefHeight="49.0" prefWidth="404.0" promptText="Age" style="-fx-border-color: #000059; -fx-border-width: 5;">
+      <TextField fx:id="txtAge" alignment="CENTER" layoutX="45.0" layoutY="815.0" onKeyReleased="#textFieldsKeyReleased" prefHeight="49.0" prefWidth="404.0" promptText="Age" style="-fx-border-color: #000059; -fx-border-width: 5;">
          <font>
             <Font name="System Bold" size="19.0" />
          </font>
@@ -84,7 +84,7 @@
         </columns>
       </TableView>
       <ComboBox fx:id="cmbGender" layoutX="45.0" layoutY="581.0" prefHeight="49.0" prefWidth="417.0" promptText="Gendr" />
-      <TextField fx:id="txtId" alignment="CENTER" layoutX="45.0" layoutY="348.0" prefHeight="49.0" prefWidth="417.0" promptText="Id" style="-fx-border-color: #000059; -fx-border-width: 5;">
+      <TextField fx:id="txtId" alignment="CENTER" layoutX="45.0" layoutY="348.0" onKeyReleased="#textFieldsKeyReleased" prefHeight="49.0" prefWidth="417.0" promptText="Id" style="-fx-border-color: #000059; -fx-border-width: 5;">
          <font>
             <Font name="System Bold" size="19.0" />
          </font>
