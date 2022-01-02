@@ -5,17 +5,17 @@ public class RegistrationDTO {
     private String studentId;
     private String registerDate;
     private String time;
-    private double payment;
+
 
     public RegistrationDTO() {
     }
 
-    public RegistrationDTO(String registerId, String studentId, String registerDate, String time, double payment) {
+    public RegistrationDTO(String registerId, String studentId, String registerDate, String time) {
         this.setRegisterId(registerId);
         this.setStudentId(studentId);
         this.setRegisterDate(registerDate);
         this.setTime(time);
-        this.setPayment(payment);
+
     }
 
     public String getRegisterId() {
@@ -50,13 +50,7 @@ public class RegistrationDTO {
         this.time = time;
     }
 
-    public double getPayment() {
-        return payment;
-    }
 
-    public void setPayment(double payment) {
-        this.payment = payment;
-    }
 
     @Override
     public String toString() {
@@ -65,7 +59,6 @@ public class RegistrationDTO {
                 ", studentId='" + studentId + '\'' +
                 ", registerDate='" + registerDate + '\'' +
                 ", time='" + time + '\'' +
-                ", payment=" + payment +
                 '}';
     }
 }
