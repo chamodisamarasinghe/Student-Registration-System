@@ -7,6 +7,7 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import util.FactoryConfiguration;
 
+import java.sql.SQLException;
 import java.util.List;
 
 public class RegistrationDAOImpl implements RegistrationDAO {
@@ -56,6 +57,16 @@ public class RegistrationDAOImpl implements RegistrationDAO {
 
     @Override
     public List<Registration> findAll() throws Exception {
+        return null;
+    }
+
+    @Override
+    public boolean ifRegisterExist(String id) throws SQLException, ClassNotFoundException {
+        return false;
+    }
+
+    @Override
+    public String generateNewRegisterId() throws SQLException, ClassNotFoundException {
         return null;
     }
 }
