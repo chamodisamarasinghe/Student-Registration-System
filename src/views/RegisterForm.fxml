@@ -123,15 +123,14 @@
       </AnchorPane>
       <TableView fx:id="tblRegistration" layoutX="14.0" layoutY="457.0" prefHeight="522.0" prefWidth="1496.0" stylesheets="@styles/RegistrationForm.css">
         <columns>
-          <TableColumn prefWidth="128.0" text="Student Id" />
-          <TableColumn prefWidth="154.0" text="Programme Id" />
-            <TableColumn prefWidth="167.0" text="Student Name" />
-            <TableColumn prefWidth="199.0" text="Birthday" />
-            <TableColumn prefWidth="118.0" text="Age" />
-            <TableColumn prefWidth="178.0" text="Address" />
-            <TableColumn prefWidth="186.0" text="Programme" />
-            <TableColumn prefWidth="176.0" text="Duration" />
-            <TableColumn prefWidth="189.0" text="Payment" />
+          <TableColumn fx:id="colRegisterId" prefWidth="147.0" text="Register Id" />
+          <TableColumn fx:id="colStudentId" prefWidth="154.0" text="Student Id" />
+            <TableColumn fx:id="colProgrammeId" prefWidth="169.0" text="Programme Id" />
+            <TableColumn fx:id="colStudentName" prefWidth="208.0" text="Student Name" />
+            <TableColumn fx:id="colAddress" prefWidth="215.0" text="Address" />
+            <TableColumn fx:id="colProgramme" prefWidth="249.0" text="Programme" />
+            <TableColumn fx:id="colDuration" prefWidth="164.0" text="Duration" />
+            <TableColumn fx:id="colPayment" prefWidth="189.0" text="Payment" />
         </columns>
       </TableView>
       <JFXButton buttonType="RAISED" layoutX="1548.0" layoutY="718.0" onAction="#addOnAction" prefHeight="46.0" prefWidth="320.0" style="-fx-background-color: #1E9E1E;" text="Add" textFill="#fcf5f5">
