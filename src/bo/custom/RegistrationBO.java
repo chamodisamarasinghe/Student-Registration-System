@@ -26,4 +26,5 @@ public interface RegistrationBO extends SuperBO {
     boolean ifProgrammeExist(String programmeId) throws SQLException, ClassNotFoundException;
 
 
+    boolean ifRegisterExist(String registerId) throws SQLException, ClassNotFoundException;
 }

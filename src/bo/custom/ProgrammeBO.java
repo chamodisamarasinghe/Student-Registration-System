@@ -4,6 +4,7 @@ import bo.SuperBO;
 import dto.ProgrammeDTO;
 import entity.Programme;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,5 +19,5 @@ public interface ProgrammeBO extends SuperBO {
 
     ArrayList<ProgrammeDTO> getAllProgrammes() throws Exception;
 
-    boolean ifProgrammeExist(String programmeId);
+    boolean ifProgrammeExist(String programmeId) throws SQLException, ClassNotFoundException;
 }
