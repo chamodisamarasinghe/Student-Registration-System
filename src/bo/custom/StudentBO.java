@@ -17,7 +17,7 @@ public interface StudentBO extends SuperBO {
 
     public boolean update(StudentDTO studentDTO) throws Exception;
 
-    ArrayList<StudentDTO> getAllStudents();
+    ArrayList<StudentDTO> getAllStudents() throws Exception;
 
     boolean ifStudentExist(String studentId) throws SQLException, ClassNotFoundException;
 
