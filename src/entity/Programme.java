@@ -1,9 +1,6 @@
 package entity;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import java.util.ArrayList;
+import javax.persistence.*;
 import java.util.List;
 
 @Entity
@@ -14,27 +11,29 @@ public class Programme implements SuperEntity {
     private String duration;
     private double fee;
 
-    @ManyToMany(mappedBy = "programmeList")
-    private List<Student> studentList = new ArrayList<>();
+    @OneToMany(mappedBy = "programmeId",fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+    private List<RegisterDetail> pid;
 
     public Programme() {
     }
 
 
 
-    public Programme(String programmeId, String programmeName, String duration, double fee, List<Student> studentList) {
+
+
+    public Programme(String programmeId, String programmeName, String duration, double fee) {
         this.setProgrammeId(programmeId);
         this.setProgrammeName(programmeName);
         this.setDuration(duration);
         this.setFee(fee);
-        this.setStudentList(studentList);
     }
 
-    public Programme(String programmeId, String programmeName, String duration, double fee) {
-        this.programmeId = programmeId;
-        this.programmeName = programmeName;
-        this.duration = duration;
-        this.fee = fee;
+    public Programme(String programmeId, String programmeName, String duration, double fee, List<RegisterDetail> pid) {
+        this.setProgrammeId(programmeId);
+        this.setProgrammeName(programmeName);
+        this.setDuration(duration);
+        this.setFee(fee);
+        this.setPid(pid);
     }
 
     public String getProgrammeId() {
@@ -69,12 +68,12 @@ public class Programme implements SuperEntity {
         this.fee = fee;
     }
 
-    public List<Student> getStudentList() {
-        return studentList;
+    public List<RegisterDetail> getPid() {
+        return pid;
     }
 
-    public void setStudentList(List<Student> studentList) {
-        this.studentList = studentList;
+    public void setPid(List<RegisterDetail> pid) {
+        this.pid = pid;
     }
 
     @Override
@@ -84,7 +83,7 @@ public class Programme implements SuperEntity {
                 ", programmeName='" + programmeName + '\'' +
                 ", duration='" + duration + '\'' +
                 ", fee=" + fee +
-                ", studentList=" + studentList +
+                ", pid=" + pid +
                 '}';
     }
 }
