@@ -4,8 +4,13 @@ import bo.BoFactory;
 import bo.custom.RegistrationBO;
 import bo.custom.impl.RegistrationBOImpl;
 import com.jfoenix.controls.JFXButton;
-import dto.ProgrammeDTO;
-import dto.StudentDTO;
+import dto.*;
+import entity.RegisterDetail;
+import entity.Registration;
+import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -15,12 +20,18 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import views.tdm.RegistrationTM;
 
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class RegisterFormController {
     private final RegistrationBO registrationBO = (RegistrationBO)  BoFactory.getBoFactory().getBO(BoFactory.BoTypes.REGISTRATION);
@@ -51,6 +62,8 @@ public class RegisterFormController {
     public TableColumn colProgramme;
     public TableColumn colPayment;
     public JFXButton btnAdd;
+    private String registerId;
+    int cartSelectedRowForRemove = -1;
 
 
     public void initialize(){
@@ -91,7 +104,9 @@ public class RegisterFormController {
 
         });
 
-
+        tblRegistration.getSelectionModel().selectedIndexProperty().addListener((observable, oldValue, newValue) -> {
+            cartSelectedRowForRemove = (int) newValue;
+        });
 
         try {
             loadProgrammeIds();
@@ -117,7 +132,30 @@ public class RegisterFormController {
 
         });
 
+        registerId = String.valueOf(generateNewRegisterId());
+        lblRegId.setText(registerId);
+        loadDateAndTime();
+
+
             }
+
+    private void loadDateAndTime() {
+        Date date=new Date();
+        SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");
+        lblDate.setText(f.format(date));
+
+        Timeline time = new Timeline(new KeyFrame(Duration.ZERO, e -> {
+            LocalTime currentTime = LocalTime.now();
+            lblTime.setText(
+                    currentTime.getHour() + " : " + currentTime.getMinute() +
+                            " : " + currentTime.getSecond()
+            );
+        }),
+                new KeyFrame(Duration.seconds(1))
+        );
+        time.setCycleCount(Animation.INDEFINITE);
+        time.play();
+    }
 
     private void loadProgrammeIds() {
         ArrayList<ProgrammeDTO> all = null;
@@ -171,63 +209,36 @@ public class RegisterFormController {
         window.setScene(new Scene(load));
     }
 
+
+    ObservableList<RegistrationTM> obList = FXCollections.observableArrayList();
     public void addOnAction(ActionEvent actionEvent) {
-
-        String registerId = lblRegId.getId();
-        String studentID = String.valueOf(cmbStudentId.getValue());
-        String programmeId = String.valueOf(cmbProgrammeId.getValue());
-        String studentName = txtName.getText();
-        String address = txtAddress.getText();
-        String programme = txtProgramme.getText();
-        String duration = txtDuration.getText();
-        double payment = Double.parseDouble(lblTotal.getText());
-
-        boolean exists = tblRegistration.getItems().stream().anyMatch(detail -> detail.getProgrammeId().equals(programmeId));
-
-        if (exists) {
-            RegistrationTM registrationTM = tblRegistration.getItems().stream().filter(detail -> detail.getProgrammeId().equals(programmeId)).findFirst().get();
-
-
-            tblRegistration.refresh();
-        } else {
-            tblRegistration.getItems().add(new RegistrationTM(registerId, studentID, programmeId,studentName,address,programme, duration, payment));
-        }
-        cmbStudentId.getSelectionModel().clearSelection();
-        cmbStudentId.requestFocus();
-       // calculateTotal();
-      //  enableOrDisablePlaceOrderButton();
-
-
-
-
-      /*  try {
-            String registerId = lblRegId.getId();
-            String studentID = String.valueOf(cmbStudentId.getValue());
-            String programmeId = String.valueOf(cmbProgrammeId.getValue());
+            String registerId = lblRegId.getText();
+            String studentId = String.valueOf(cmbStudentId.getValue());
+            String programId = String.valueOf(cmbProgrammeId.getValue());
             String studentName = txtName.getText();
             String address = txtAddress.getText();
             String programme = txtProgramme.getText();
             String duration = txtDuration.getText();
-            double payment = Double.parseDouble(lblTotal.getText());
-
+            double payment = Double.parseDouble(txtFee.getText());
 
             RegistrationTM tm = new RegistrationTM(
                     registerId,
-                    studentID,
-                    programmeId,
+                    studentId,
+                    programId,
                     studentName,
                     address,
                     programme,
                     duration,
                     payment
             );
+
             int rowNumber = isExists(tm);
 
-            if (rowNumber == -1) {
+            if ( rowNumber==-1) {
                 obList.add(tm);
             } else {
                 RegistrationTM temp = obList.get(rowNumber);
-                RegistrationTM = new RegistrationTM(
+                RegistrationTM newTm = new RegistrationTM(
                         temp.getRegisterId(),
                         temp.getStudentId(),
                         temp.getProgrammeId(),
@@ -241,56 +252,89 @@ public class RegisterFormController {
                 obList.remove(rowNumber);
                 obList.add(newTm);
             }
+
             tblRegistration.setItems(obList);
-            calculatePayment();
 
-
-        } catch (Exception e) {
-            new Alert(Alert.AlertType.WARNING, e.getMessage()).show();
-            e.printStackTrace();
+            calculate();
         }
-        String itemCode = cmbCode.getSelectionModel().getSelectedItem();
-        String description = txtDescription.getText();
-        String packSize = txtPackSize.getText();
-        int qty = Integer.parseInt(txtQty.getText());
-        double unitPrice = Double.parseDouble(txtUnitPrize.getText());
-        // int qty = Integer.parseInt(txtQty.getText());
-        double total = qty * unitPrice;
 
-        boolean exists = tblOrderDetails.getItems().stream().anyMatch(detail -> detail.getCode().equals(itemCode));
+        private int isExists(RegistrationTM tm) {
 
-        if (exists) {
-            OrderDetailTM orderDetailTM = tblOrderDetails.getItems().stream().filter(detail -> detail.getCode().equals(itemCode)).findFirst().get();
-
-            if (btnSave.getText().equalsIgnoreCase("Update")) {
-                orderDetailTM.setQty(qty);
-                orderDetailTM.setTotal(total);
-                tblOrderDetails.getSelectionModel().clearSelection();
-            } else {
-                orderDetailTM.setQty(orderDetailTM.getQty() + qty);
-                total = qty * unitPrice;
-                orderDetailTM.setTotal(total);
+            for (int i = 0; i < obList.size(); i++) {
+                if (tm.getProgrammeId().equals(obList.get(i).getProgrammeId())){
+                    return i;
+                }
             }
-            tblOrderDetails.refresh();
-        } else {
-            tblOrderDetails.getItems().add(new OrderDetailTM(itemCode, description, packSize, qty, unitPrice, total));
+            return -1;
         }
-        cmbCode.getSelectionModel().clearSelection();
-        cmbCode.requestFocus();
-        calculateTotal();
-        enableOrDisablePlaceOrderButton();*/
-    }
+        void calculate() {
+            double ttl = 0;
+            for (RegistrationTM tm : obList
+            ) {
+                ttl += tm.getPayment();
+            }
+            lblTotal.setText(ttl+"");
+        }
 
-    private void calculatePayment() {
-    }
+
+
+
 
     private boolean isExists(String registerId) throws SQLException, ClassNotFoundException {
         return registrationBO.ifRegisterExist(registerId);
     }
 
     public void cancelOnAction(ActionEvent actionEvent) {
+        if (cartSelectedRowForRemove==-1){
+            new Alert(Alert.AlertType.WARNING, "Please Select a row").show();
+        }else{
+            obList.remove(cartSelectedRowForRemove);
+            tblRegistration.refresh();
+        }
     }
 
-    public void confirmOnAction(ActionEvent actionEvent) {
+    public void confirmOnAction(ActionEvent actionEvent) throws Exception {
+        RegisterDTO registerDTO= new RegisterDTO(
+                lblRegId.getText(),
+                String.valueOf(cmbStudentId.getValue()),
+                String.valueOf(cmbProgrammeId.getValue()),
+                lblDate.getText(),
+                lblTime.getText(),
+                tblRegistration.getItems().stream().map(tm ->
+                        new RegisterDetailDTO(tm.getProgrammeId(),tm.getStudentId())).collect(Collectors.toList())
+
+
+        );
+
+        if (registrationBO.confirmRegister(registerDTO)) {
+            new Alert(Alert.AlertType.INFORMATION, "Registered Successfully").show();
+        } else {
+            new Alert(Alert.AlertType.ERROR, "Try Again ").show();
+        }
+
+        registerId = String.valueOf(generateNewRegisterId());
+        lblRegId.setText(String.valueOf(generateNewRegisterId()));
+        tblRegistration.getItems().clear();
+        clearText();
+
+
     }
+
+    private void clearText() {
+
+    }
+
+
+    private Object generateNewRegisterId() {
+        try {
+            return registrationBO.generateNewOrderId();
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR, "Failed to generate a new register id").show();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+
 }
