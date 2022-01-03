@@ -61,4 +61,6 @@ public class RegistrationDTO {
                 ", time='" + time + '\'' +
                 '}';
     }
+
+
 }
