@@ -3,14 +3,11 @@ package bo.custom.impl;
 import bo.custom.RegistrationBO;
 import dao.DAOFactory;
 import dao.custom.ProgrammeDAO;
+import dao.custom.RegisterDetailDAO;
 import dao.custom.RegistrationDAO;
 import dao.custom.StudentDAO;
-import dto.ProgrammeDTO;
-import dto.RegistrationDTO;
-import dto.StudentDTO;
-import entity.Programme;
-import entity.Registration;
-import entity.Student;
+import dto.*;
+import entity.*;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import util.FactoryConfiguration;
@@ -23,7 +20,7 @@ public class RegistrationBOImpl implements RegistrationBO {
     private final StudentDAO studentDAO = (StudentDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOType.STUDENT);
     private final ProgrammeDAO programmeDAO = (ProgrammeDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOType.PROGRAMME);
     private final RegistrationDAO registrationDAO = (RegistrationDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOType.REGISTRATION);
-
+    private final RegisterDetailDAO registerDetailDAO = (RegisterDetailDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOType.REGISTERDETAIL);
 
     @Override
     public ArrayList<StudentDTO> getAllStudents() throws Exception {
@@ -50,7 +47,7 @@ public class RegistrationBOImpl implements RegistrationBO {
     }
 
     @Override
-    public boolean confirmRegister(RegistrationDTO dto) throws SQLException, ClassNotFoundException {
+    public boolean confirmRegister(RegisterDTO dto) throws Exception {
         try {
             Session session = FactoryConfiguration.getInstance().getSession();
             Transaction transaction = session.beginTransaction();
@@ -60,7 +57,8 @@ public class RegistrationBOImpl implements RegistrationBO {
                 return false;
             }
 
-            Registration registration = new Registration(dto.getRegisterId(), dto.getRegisterDate(),dto.getTime());
+            Student student = studentDAO.find(dto.getStudentId());
+            Registration registration = new Registration(dto.getRegisterId(), dto.getRegisterDate(),dto.getTime(),student);
             boolean registerAdded = registrationDAO.add(registration);
             if (!registerAdded) {
 
@@ -70,17 +68,24 @@ public class RegistrationBOImpl implements RegistrationBO {
                 return false;
             }
 
-            Student search = studentDAO.find(dto.getRegisterId());
-            boolean update = studentDAO.update(search);
+            Student student1 = studentDAO.find(dto.getStudentId());
+            Programme programme = programmeDAO.find(dto.getProgrammeId());
 
-            if (!update) {
-                transaction.commit();
-
-                session.close();
-                return false;
+            for (RegisterDetailDTO detailDTO : dto.getRegisterDetail()) {
+                RegisterDetail registerDetail = new RegisterDetail(Long.parseLong("0"), programme, student1);
+                boolean registerDetailAdd = registerDetailDAO.add(registerDetail);
+                if (!registerDetailAdd) {
+                    transaction.commit();
+                    session.close();
+                    return false;
+                }
             }
-        } catch (Exception exception) {
-            exception.printStackTrace();
+
+
+            transaction.commit();
+            session.close();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
         return true;
     }
@@ -116,6 +121,23 @@ public class RegistrationBOImpl implements RegistrationBO {
     @Override
     public boolean ifRegisterExist(String registerId) throws SQLException, ClassNotFoundException {
         return registrationDAO.ifRegisterExist(registerId);
+    }
+
+    @Override
+    public List<RegistrationDTO> findAll() throws Exception {
+        List<Registration> all = registrationDAO.findAll();
+        ArrayList<RegistrationDTO> dtoList = new ArrayList<>();
+        for (Registration registration : all) {
+            dtoList.add(new RegistrationDTO(
+                    registration.getRegisterId(),
+                    registration.getStudent().getStudentId(),
+                    registration.getRegisterDate(),
+                    registration.getTime()
+
+
+            ));
+        }
+        return dtoList;
     }
 
 
