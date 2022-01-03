@@ -100,5 +100,10 @@ public class StudentBOImpl implements StudentBO {
         return null;
     }
 
+    @Override
+    public StudentDTO find(String studentId) throws SQLException, ClassNotFoundException {
+        return null;
+    }
+
 
 }
