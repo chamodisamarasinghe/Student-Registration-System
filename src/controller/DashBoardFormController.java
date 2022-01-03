@@ -28,10 +28,10 @@ public class DashBoardFormController {
     }
 
     public void viewRegistration(ActionEvent actionEvent) throws IOException {
-        /*URL resource = getClass().getResource("../views/");
+        URL resource = getClass().getResource("../views/ViewRegisterForm.fxml");
         Parent load = FXMLLoader.load(resource);
         Stage window = (Stage) dashBoardContext.getScene().getWindow();
-        window.setScene(new Scene(load));*/
+        window.setScene(new Scene(load));
     }
 
     public void openRegisterForm(ActionEvent actionEvent) throws IOException {
