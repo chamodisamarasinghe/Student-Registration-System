@@ -45,7 +45,7 @@ public class ProgrammeFormController {
     public TextField txtFee;
 
     LinkedHashMap<TextField, Pattern> map = new LinkedHashMap();
-    Pattern programmeIDPattern = Pattern.compile("^(P)[0-9]{3,4}$");
+    Pattern programmeIDPattern = Pattern.compile("^(CT)[0-9]{3,4}$");
     Pattern programmePattern = Pattern.compile("^[A-z ]{2,}$");
     Pattern durationPattern = Pattern.compile("^[0-9]{1,2}$");
 
