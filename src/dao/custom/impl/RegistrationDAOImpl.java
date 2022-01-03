@@ -1,10 +1,11 @@
 package dao.custom.impl;
 
 import dao.custom.RegistrationDAO;
+import entity.Programme;
 import entity.Registration;
-import entity.Student;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 import util.FactoryConfiguration;
 
 import java.sql.SQLException;
@@ -67,6 +68,27 @@ public class RegistrationDAOImpl implements RegistrationDAO {
 
     @Override
     public String generateNewRegisterId() throws SQLException, ClassNotFoundException {
-        return null;
+        Session session = FactoryConfiguration.getInstance().getSession();
+        Transaction transaction = session.beginTransaction();
+
+        String hql = "FROM Registration r ORDER BY r.registerId desc";
+        Query query = session.createQuery(hql);
+        List resultList = ((org.hibernate.query.Query) query).getResultList();
+        transaction.commit();
+        session.close();
+        if(resultList.size()>0) {
+            int tempId = Integer.parseInt(((Registration) resultList.get(0)).getRegisterId().split("-")[1]);
+            tempId = tempId + 1;
+            if (tempId <= 9) {
+                return "R-00" + tempId;
+            } else if (tempId <= 99) {
+                return "R-0" + tempId;
+            } else {
+                return "R-" + tempId;
+            }
+        }else {
+            return "R-001";
+            }
+        }
     }
-}
+
