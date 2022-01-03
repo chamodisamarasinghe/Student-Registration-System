@@ -1,6 +1,7 @@
 package dao;
 
 import dao.custom.impl.ProgrammeDAOImpl;
+import dao.custom.impl.RegisterDetailDAOImpl;
 import dao.custom.impl.RegistrationDAOImpl;
 import dao.custom.impl.StudentDAOImpl;
 
@@ -24,12 +25,14 @@ public class DAOFactory {
                 return  new ProgrammeDAOImpl();
             case REGISTRATION:
                 return  new RegistrationDAOImpl();
+            case REGISTERDETAIL:
+                return new RegisterDetailDAOImpl();
             default:
                 return null;
         }
     }
 
     public enum DAOType {
-        STUDENT, PROGRAMME, REGISTRATION
+        STUDENT, PROGRAMME, REGISTRATION, REGISTERDETAIL
     }
 }
