@@ -1,8 +1,6 @@
 package util;
 
-import entity.Programme;
-import entity.Registration;
-import entity.Student;
+import entity.*;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -23,7 +21,7 @@ public class FactoryConfiguration {
         }
 
 
-          Configuration configuration =new Configuration().mergeProperties(properties).addAnnotatedClass(Student.class).addAnnotatedClass(Programme.class).addAnnotatedClass(Registration.class);
+          Configuration configuration =new Configuration().mergeProperties(properties).addAnnotatedClass(Student.class).addAnnotatedClass(Programme.class).addAnnotatedClass(Registration.class).addAnnotatedClass(RegisterDetail.class);
             sessionFactory = configuration.buildSessionFactory();
         }
 
