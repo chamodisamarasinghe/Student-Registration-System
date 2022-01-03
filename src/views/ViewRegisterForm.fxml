@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane fx:id="regDetailContext" prefHeight="857.0" prefWidth="1201.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ViewRegisterFormController">
+   <children>
+      <AnchorPane prefHeight="84.0" prefWidth="1201.0" style="-fx-background-color: #000059;">
+         <children>
+            <Text fill="#f2eded" layoutX="454.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Register Detail" wrappingWidth="271.6708984375">
+               <font>
+                  <Font name="System Bold" size="33.0" />
+               </font>
+            </Text>
+            <JFXButton layoutX="1076.0" layoutY="9.0" onAction="#openHomeOnAction" prefHeight="60.0" prefWidth="89.0" style="-fx-border-color: white;" />
+            <ImageView fitHeight="44.0" fitWidth="48.0" layoutX="1097.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assests/icons8-home-50.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <TableView fx:id="tblRegisterDetail" layoutX="37.0" layoutY="149.0" prefHeight="664.0" prefWidth="1128.0">
+        <columns>
+          <TableColumn fx:id="colRegId" prefWidth="141.0" text="Register Id" />
+          <TableColumn fx:id="colStudentId" prefWidth="151.0" text="Student Id" />
+            <TableColumn fx:id="colProgrammeId" prefWidth="203.0" text="Programme Id" />
+            <TableColumn fx:id="colRegDate" prefWidth="190.0" text="Register Date" />
+            <TableColumn fx:id="colTime" prefWidth="234.0" text="Time" />
+            <TableColumn fx:id="colPayment" prefWidth="206.0" text="Payment" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>
