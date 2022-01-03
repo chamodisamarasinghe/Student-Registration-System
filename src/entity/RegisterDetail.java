@@ -1,49 +1,60 @@
 package entity;
 
-public class RegisterDetail {
-    private String registerId;
-    private String studentId;
-    private String programmeId;
+import javax.persistence.*;
+
+@Entity
+public class RegisterDetail implements SuperEntity{
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long registerId;
+
+    @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+    @JoinColumn(name = "programmeId")
+    private Programme programmeId;
+
+    @ManyToOne
+    @JoinColumn(name = "sid" )
+    private Student sid;
 
     public RegisterDetail() {
     }
 
-    public RegisterDetail(String registerId, String studentId, String programmeId) {
-        this.setRegisterId(registerId);
-        this.setStudentId(studentId);
-        this.setProgrammeId(programmeId);
+    public RegisterDetail(Long registerId, Programme programmeId, Student sid) {
+        this.registerId = registerId;
+        this.programmeId = programmeId;
+        this.sid = sid;
     }
 
-    public String getRegisterId() {
+    public Long getRegisterId() {
         return registerId;
     }
 
-    public void setRegisterId(String registerId) {
+    public void setRegisterId(Long registerId) {
         this.registerId = registerId;
     }
 
-    public String getStudentId() {
-        return studentId;
-    }
-
-    public void setStudentId(String studentId) {
-        this.studentId = studentId;
-    }
-
-    public String getProgrammeId() {
+    public Programme getProgrammeId() {
         return programmeId;
     }
 
-    public void setProgrammeId(String programmeId) {
+    public void setProgrammeId(Programme programmeId) {
         this.programmeId = programmeId;
+    }
+
+    public Student getSid() {
+        return sid;
+    }
+
+    public void setSid(Student sid) {
+        this.sid = sid;
     }
 
     @Override
     public String toString() {
         return "RegisterDetail{" +
-                "registerId='" + registerId + '\'' +
-                ", studentId='" + studentId + '\'' +
-                ", programmeId='" + programmeId + '\'' +
+                "registerId=" + registerId +
+                ", programmeId=" + programmeId +
+                ", sid=" + sid +
                 '}';
     }
 }
