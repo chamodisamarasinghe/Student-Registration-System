@@ -22,4 +22,6 @@ public interface StudentBO extends SuperBO {
     boolean ifStudentExist(String studentId) throws SQLException, ClassNotFoundException;
 
     String generateNewID();
+
+    StudentDTO find(String studentId) throws SQLException, ClassNotFoundException;
 }

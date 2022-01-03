@@ -1,12 +1,11 @@
 package bo.custom;
 
 import bo.SuperBO;
-import dto.ProgrammeDTO;
-import dto.RegistrationDTO;
-import dto.StudentDTO;
+import dto.*;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 public interface RegistrationBO extends SuperBO {
     ArrayList<StudentDTO> getAllStudents() throws Exception;
@@ -15,7 +14,7 @@ public interface RegistrationBO extends SuperBO {
 
     boolean ifStudentExist(String studentId)throws SQLException, ClassNotFoundException;
 
-    boolean confirmRegister(RegistrationDTO dto) throws SQLException, ClassNotFoundException;
+    boolean confirmRegister(RegisterDTO dto) throws Exception;
 
     String generateNewOrderId()throws SQLException, ClassNotFoundException;
 
@@ -27,4 +26,6 @@ public interface RegistrationBO extends SuperBO {
 
 
     boolean ifRegisterExist(String registerId) throws SQLException, ClassNotFoundException;
+
+    List<RegistrationDTO> findAll() throws Exception;
 }
