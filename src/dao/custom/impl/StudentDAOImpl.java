@@ -1,13 +1,14 @@
 package dao.custom.impl;
 
 import dao.custom.StudentDAO;
+import entity.Programme;
 import entity.Student;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import util.FactoryConfiguration;
 
+import javax.persistence.Entity;
 import javax.persistence.Query;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
