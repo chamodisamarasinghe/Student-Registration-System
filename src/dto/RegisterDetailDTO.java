@@ -1,24 +1,14 @@
 package dto;
 
 public class RegisterDetailDTO {
-    private String registerId;
+    private Long registerId;
     private String studentId;
-    private String programmeId;
 
-    public RegisterDetailDTO() {
-    }
-
-    public RegisterDetailDTO(String registerId, String studentId, String programmeId) {
-        this.setRegisterId(registerId);
-        this.setStudentId(studentId);
-        this.setProgrammeId(programmeId);
-    }
-
-    public String getRegisterId() {
+    public Long getRegisterId() {
         return registerId;
     }
 
-    public void setRegisterId(String registerId) {
+    public void setRegisterId(Long registerId) {
         this.registerId = registerId;
     }
 
@@ -38,10 +28,26 @@ public class RegisterDetailDTO {
         this.programmeId = programmeId;
     }
 
+    private String programmeId;
+
+    public RegisterDetailDTO() {
+    }
+
+    public RegisterDetailDTO(Long registerId, String studentId, String programmeId) {
+        this.registerId = registerId;
+        this.studentId = studentId;
+        this.programmeId = programmeId;
+    }
+
+    public RegisterDetailDTO( String studentId, String programmeId) {
+        this.studentId = studentId;
+        this.programmeId = programmeId;
+    }
+
     @Override
     public String toString() {
         return "RegisterDetailDTO{" +
-                "registerId='" + registerId + '\'' +
+                "registerId=" + registerId +
                 ", studentId='" + studentId + '\'' +
                 ", programmeId='" + programmeId + '\'' +
                 '}';
