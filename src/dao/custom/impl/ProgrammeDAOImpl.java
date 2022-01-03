@@ -2,7 +2,6 @@ package dao.custom.impl;
 
 import dao.custom.ProgrammeDAO;
 import entity.Programme;
-import entity.Student;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import util.FactoryConfiguration;
