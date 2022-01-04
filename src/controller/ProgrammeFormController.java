@@ -229,4 +229,15 @@ public class ProgrammeFormController {
         }
     }
 
+    public void moveToName(ActionEvent actionEvent) {
+        txtProgramme.requestFocus();
+    }
+
+    public void moveToDuration(ActionEvent actionEvent) {
+        txtDuration.requestFocus();
+    }
+
+    public void moveToFee(ActionEvent actionEvent) {
+        txtFee.requestFocus();
+    }
 }
