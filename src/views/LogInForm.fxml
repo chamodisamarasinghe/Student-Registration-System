@@ -15,7 +15,7 @@
             <Font name="System Bold" size="47.0" />
          </font>
       </Text>
-      <JFXTextField fx:id="txtUserName" labelFloat="true" layoutX="587.0" layoutY="240.0" prefHeight="51.0" prefWidth="450.0" promptText="User Name">
+      <JFXTextField fx:id="txtUserName" labelFloat="true" layoutX="587.0" layoutY="240.0" onAction="#moveToPassWord" prefHeight="51.0" prefWidth="450.0" promptText="User Name">
          <font>
             <Font name="System Bold" size="25.0" />
          </font>

@@ -29,4 +29,8 @@ public class LogInFormController {
     public void cancelOnAction(ActionEvent actionEvent) {
 
     }
+
+    public void moveToPassWord(ActionEvent actionEvent) {
+        txtPassWord.requestFocus();
+    }
 }
