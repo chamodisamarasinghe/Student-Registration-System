@@ -356,4 +356,23 @@ public class StudentFormController {
         }
     }
 
+    public void moveToGender(ActionEvent actionEvent) {
+        txtGender.requestFocus();
+    }
+
+    public void moveToName(ActionEvent actionEvent) {
+        txtName.requestFocus();
+    }
+
+    public void moveToAge(ActionEvent actionEvent) {
+        txtAge.requestFocus();
+    }
+
+    public void moveToNic(ActionEvent actionEvent) {
+        txtNIC.requestFocus();
+    }
+
+    public void moveToBirthday(ActionEvent actionEvent) {
+        txtBirthday.requestFocus();
+    }
 }
