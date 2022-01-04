@@ -43,10 +43,10 @@ public class ViewRegisterFormController {
 
         colRegId.setCellValueFactory(new PropertyValueFactory<>("registerId"));
         colStudentId.setCellValueFactory(new PropertyValueFactory<>("studentId"));
-      //  colProgrammeId.setCellValueFactory(new PropertyValueFactory<>("programmeId"));
+       colProgrammeId.setCellValueFactory(new PropertyValueFactory<>("programmeId"));
         colRegDate.setCellValueFactory(new PropertyValueFactory<>("registerDate"));
         colTime.setCellValueFactory(new PropertyValueFactory<>("time"));
-       // colPayment.setCellValueFactory(new PropertyValueFactory<>("payment"));
+        colPayment.setCellValueFactory(new PropertyValueFactory<>("payment"));
 
         loadDetails();
     }

@@ -8,9 +8,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="logInFormContext" prefHeight="743.0" prefWidth="1075.0" style="-fx-background-color: #82CAFF; -fx-border-color: #0000A5; -fx-border-width: 20;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LogInFormController">
+<AnchorPane fx:id="logInFormContext" prefHeight="743.0" prefWidth="1075.0" style="-fx-background-color: white; -fx-border-color: #0000A5; -fx-border-width: 20;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LogInFormController">
    <children>
-      <Text fill="#100ba1" layoutX="451.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Log In Form" textAlignment="CENTER" wrappingWidth="450.0000046938658">
+      <Text fill="#100ba1" layoutX="531.0" layoutY="96.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Log In Form" textAlignment="CENTER" wrappingWidth="450.0000046938658">
          <font>
             <Font name="System Bold" size="47.0" />
          </font>
@@ -50,14 +50,14 @@
             <Image url="@../assests/icons8-school-50.png" />
          </image>
       </ImageView>
-      <Text fill="#f2ecec" layoutX="117.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sipsewana">
+      <Text fill="#27075e" layoutX="117.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sipsewana">
          <font>
             <Font name="System Bold" size="33.0" />
          </font>
       </Text>
-      <ImageView fitHeight="524.0" fitWidth="383.0" layoutX="34.0" layoutY="179.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="428.0" fitWidth="418.0" layoutX="37.0" layoutY="194.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../assests/e91857d0-233f-4cf4-b47a-f85c3d335f13.png" />
+            <Image url="@../assests/polar-83.png" />
          </image>
       </ImageView>
    </children>
