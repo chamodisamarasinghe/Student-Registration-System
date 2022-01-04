@@ -124,15 +124,17 @@ public class RegistrationBOImpl implements RegistrationBO {
     }
 
     @Override
-    public List<RegistrationDTO> findAll() throws Exception {
+    public List<RegisterDTO> findAll() throws Exception {
         List<Registration> all = registrationDAO.findAll();
-        ArrayList<RegistrationDTO> dtoList = new ArrayList<>();
+        ArrayList<RegisterDTO> dtoList = new ArrayList<>();
         for (Registration registration : all) {
-            dtoList.add(new RegistrationDTO(
+            System.out.println(registration.getStudent().getStudentId());
+            dtoList.add(new RegisterDTO(
                     registration.getRegisterId(),
                     registration.getStudent().getStudentId(),
                     registration.getRegisterDate(),
                     registration.getTime()
+                  //  getProgramID(registration.getStudent().getStudentId())
 
 
             ));
@@ -140,5 +142,33 @@ public class RegistrationBOImpl implements RegistrationBO {
         return dtoList;
     }
 
+    @Override
+    public RegisterDTO getRegister(String registerId) throws Exception {
+        List<RegisterDTO> all = findAll();
+        for (RegisterDTO p:all) {
+            if (p.getRegisterId().equals(registerId)){
+                return new RegisterDTO(
+                        p.getRegisterId(),
+                        p.getStudentId(),
+                        p.getProgrammeId(),
+                        p.getRegisterDate(),
+                        p.getTime(),
+                        p.getRegisterDetail()
+                );
+            }
+        }
+        return null;
+    }
+
+    public String getProgramID(String studentId) throws Exception {
+        List<RegisterDetail> all = registerDetailDAO.findAll();
+        for (RegisterDetail registerDetail:all) {
+            if (studentId.equals(registerDetail.getSid().getStudentId())){
+                System.out.println(registerDetail.getProgrammeId());
+                return registerDetail.getProgrammeId().getProgrammeId();
+            }
+        }
+        return null;
+    }
 
 }

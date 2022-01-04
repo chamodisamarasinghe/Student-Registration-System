@@ -22,6 +22,29 @@ public class RegisterDTO {
         this.setRegisterDetail(registerDetail);
     }
 
+//    public RegisterDTO(String registerId, String studentId, String programID, String registerDate, String time) {
+//        this.setRegisterId(registerId);
+//        this.setStudentId(studentId);
+//        this.setProgrammeId(programmeId);
+//        this.setRegisterDate(registerDate);
+//        this.setTime(time);
+//    }
+
+    public RegisterDTO(String registerId, String studentId, String programmeId, String registerDate, String time) {
+        this.registerId = registerId;
+        this.studentId = studentId;
+        this.programmeId = programmeId;
+        this.registerDate = registerDate;
+        this.time = time;
+    }
+
+    public RegisterDTO(String registerId, String studentId, String registerDate, String time) {
+        this.registerId = registerId;
+        this.studentId = studentId;
+        this.registerDate = registerDate;
+        this.time = time;
+    }
+
     public String getRegisterId() {
         return registerId;
     }

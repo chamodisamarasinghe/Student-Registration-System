@@ -27,5 +27,7 @@ public interface RegistrationBO extends SuperBO {
 
     boolean ifRegisterExist(String registerId) throws SQLException, ClassNotFoundException;
 
-    List<RegistrationDTO> findAll() throws Exception;
+    List<RegisterDTO> findAll() throws Exception;
+
+    RegisterDTO getRegister(String registerId) throws Exception;
 }

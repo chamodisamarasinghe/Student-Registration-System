@@ -20,4 +20,6 @@ public interface ProgrammeBO extends SuperBO {
     ArrayList<ProgrammeDTO> getAllProgrammes() throws Exception;
 
     boolean ifProgrammeExist(String programmeId) throws SQLException, ClassNotFoundException;
+
+    ProgrammeDTO getProgrammes(String valueOf) throws Exception;
 }

@@ -105,5 +105,25 @@ public class StudentBOImpl implements StudentBO {
         return null;
     }
 
+    @Override
+    public StudentDTO getStudents(String studentId) throws Exception {
+        List<Student> all = findAll();
+        for (Student p:all) {
+            if (p.getStudentId().equals(studentId)){
+                return new StudentDTO(
+                        p.getStudentId(),
+                        p.getNIC(),
+                        p.getName(),
+                        p.getGender(),
+                        p.getBirthday(),
+                        p.getAge(),
+                        p.getAddress()
+
+                );
+            }
+        }
+        return null;
+    }
+
 
 }

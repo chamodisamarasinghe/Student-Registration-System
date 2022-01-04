@@ -7,6 +7,7 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import util.FactoryConfiguration;
 
+import javax.persistence.Query;
 import java.util.List;
 
 public class RegisterDetailDAOImpl implements RegisterDetailDAO {
@@ -38,6 +39,17 @@ public class RegisterDetailDAOImpl implements RegisterDetailDAO {
 
     @Override
     public List<RegisterDetail> findAll() throws Exception {
-        return null;
+        Session session = FactoryConfiguration.getInstance().getSession();
+        Transaction transaction = session.beginTransaction();
+
+        List<RegisterDetail> list = null;
+
+        Query registers = session.createQuery("from RegisterDetail");
+        list = registers.getResultList();
+
+        transaction.commit();
+
+        session.close();
+        return list;
     }
 }

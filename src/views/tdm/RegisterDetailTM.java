@@ -20,6 +20,9 @@ public class RegisterDetailTM {
         this.payment = payment;
     }
 
+    public RegisterDetailTM(String registerId, String studentId, String registerDate, String time) {
+    }
+
     public String getRegisterId() {
         return registerId;
     }

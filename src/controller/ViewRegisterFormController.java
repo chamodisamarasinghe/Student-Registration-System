@@ -4,10 +4,9 @@ import bo.BoFactory;
 import bo.custom.ProgrammeBO;
 import bo.custom.RegistrationBO;
 import bo.custom.StudentBO;
-import dto.ProgrammeDTO;
-import dto.RegDetailDTO;
-import dto.RegistrationDTO;
-import dto.StudentDTO;
+import dto.*;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -18,6 +17,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import views.tdm.RegisterDetailTM;
+import views.tdm.RegistrationTM;
 
 import java.io.IOException;
 import java.net.URL;
@@ -43,23 +43,36 @@ public class ViewRegisterFormController {
 
         colRegId.setCellValueFactory(new PropertyValueFactory<>("registerId"));
         colStudentId.setCellValueFactory(new PropertyValueFactory<>("studentId"));
-        colProgrammeId.setCellValueFactory(new PropertyValueFactory<>("programmeId"));
+      //  colProgrammeId.setCellValueFactory(new PropertyValueFactory<>("programmeId"));
         colRegDate.setCellValueFactory(new PropertyValueFactory<>("registerDate"));
         colTime.setCellValueFactory(new PropertyValueFactory<>("time"));
-        colPayment.setCellValueFactory(new PropertyValueFactory<>("payment"));
+       // colPayment.setCellValueFactory(new PropertyValueFactory<>("payment"));
 
         loadDetails();
     }
 
     private void loadDetails() {
-      /*  tblRegisterDetail.getItems().clear();
+        tblRegisterDetail.getItems().clear();
         try {
-            List<RegDetailDTO> allRegistrations = registrationBO.findAll();
-            for (RegDetailDTO regDetailDTO : allRegistrations) {
-                tblRegisterDetail.getItems().add(new RegisterDetailTM(regDetailDTO.getRegisterId(),regDetailDTO.getStudentId(),regDetailDTO.getProgrammeId(),
-                        regDetailDTO.getRegisterDate(),
-                        regDetailDTO.getTime(), regDetailDTO.getPayment()));
+            ObservableList<RegisterDetailTM> obList = FXCollections.observableArrayList();
+            List<RegisterDTO> allRegistrations = registrationBO.findAll();
+            for (RegisterDTO registrationDTO : allRegistrations) {
+                StudentDTO studentDTO = studentBO.getStudents(String.valueOf(registrationDTO.getStudentId()));
+                ProgrammeDTO programmeDTO = programmeBO.getProgrammes(String.valueOf(registrationDTO.getProgrammeId()));
+                RegisterDTO registerDTO = registrationBO.getRegister(registrationDTO.getRegisterId());
+
+                System.out.println(registerDTO.getStudentId());
+                System.out.println(registerDTO.getProgrammeId());
+                System.out.println(registerDTO.getRegisterId());
+
+                obList.add(new RegisterDetailTM(registrationDTO.getRegisterId(),studentDTO.getStudentId(),programmeDTO.getProgrammeId(),
+                        registrationDTO.getRegisterDate(),registrationDTO.getTime(),programmeDTO.getFee()
+                        ));
+
+
             }
+
+            tblRegisterDetail.setItems(obList);
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         } catch (ClassNotFoundException classNotFoundException) {
@@ -67,7 +80,7 @@ public class ViewRegisterFormController {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        tblRegisterDetail.getItems();*/
+        tblRegisterDetail.getItems();
     }
 
     public void openHomeOnAction(ActionEvent actionEvent) throws IOException {

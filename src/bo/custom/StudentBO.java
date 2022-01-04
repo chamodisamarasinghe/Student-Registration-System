@@ -24,4 +24,6 @@ public interface StudentBO extends SuperBO {
     String generateNewID();
 
     StudentDTO find(String studentId) throws SQLException, ClassNotFoundException;
+
+    StudentDTO getStudents(String valueOf) throws Exception;
 }

@@ -81,4 +81,21 @@ public class ProgrammeBOImpl implements ProgrammeBO {
     public boolean ifProgrammeExist(String programmeId) throws SQLException, ClassNotFoundException {
         return programmeDAO.ifProgrammeExist(programmeId);
     }
+
+    @Override
+    public ProgrammeDTO getProgrammes(String valueOf) throws Exception {
+        List<Programme> all = findAll();
+        for (Programme p:all) {
+            if (p.getProgrammeId().equals(programmeDAO)){
+                return new ProgrammeDTO(
+                        p.getProgrammeId(),
+                        p.getProgrammeName(),
+                        p.getDuration(),
+                        p.getFee()
+
+                );
+            }
+        }
+        return null;
+    }
 }
