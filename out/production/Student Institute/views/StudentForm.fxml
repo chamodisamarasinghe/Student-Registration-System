@@ -133,7 +133,7 @@
             <Image url="@../assests/student.png" />
          </image>
       </ImageView>
-      <JFXButton fx:id="btnAddNew" buttonType="RAISED" layoutX="45.0" layoutY="247.0" onAction="#addNewOnAction" prefHeight="56.0" prefWidth="221.0" style="-fx-background-color: #7BA6B4;" text="Add New" textFill="#e8e8e8">
+      <JFXButton fx:id="btnAddNew" buttonType="RAISED" layoutX="45.0" layoutY="247.0" onAction="#addNewOnAction" prefHeight="56.0" prefWidth="221.0" style="-fx-background-color: #7BA6B4;" text="Add New" textFill="#e8e8e8" visible="false">
          <font>
             <Font name="System Bold" size="26.0" />
          </font>

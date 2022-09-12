@@ -42,7 +42,7 @@
             <Font name="System Bold" size="21.0" />
          </font>
       </TextField>
-      <TableView fx:id="tblProgramme" layoutX="602.0" layoutY="123.0" prefHeight="862.0" prefWidth="1276.0" stylesheets="@styles/StudentForm.css">
+      <TableView fx:id="tblProgramme" layoutX="602.0" layoutY="123.0" prefHeight="862.0" prefWidth="1270.0" stylesheets="@styles/StudentForm.css">
         <columns>
           <TableColumn fx:id="colId" prefWidth="286.0" text="Programme Id" />
           <TableColumn fx:id="colProgramme" prefWidth="402.0" text="Programme" />
